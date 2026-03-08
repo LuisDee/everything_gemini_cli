@@ -1,0 +1,37 @@
+# Credentials & secrets
+oauth_creds.json
+oauth_creds_*.json
+google_accounts.json
+
+# User-specific state
+installation_id
+projects.json
+state.json
+trustedFolders.json
+acknowledgments/
+
+# History (user-specific session data)
+history/
+
+# Backups
+*.bak.*
+*.bak
+
+# Temp & runtime data
+tmp/
+sessions/
+metrics/
+
+# Homunculus runtime data (keep directory structure via .gitkeep)
+homunculus/instincts/*
+homunculus/evolved/*
+homunculus/projects/*
+!homunculus/instincts/.gitkeep
+!homunculus/evolved/.gitkeep
+!homunculus/projects/.gitkeep
+
+# OS files
+.DS_Store
+
+# Node
+node_modules/

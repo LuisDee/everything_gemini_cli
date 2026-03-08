@@ -1,0 +1,264 @@
+{
+  "subagents": true,
+  "experimental": {
+    "enableAgents": true
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "mcpServers": {
+    "test": {
+      "command": "/opt/homebrew/bin/node",
+      "args": [
+        "/Users/luisdeburnay/test-mcp.js"
+      ]
+    },
+    "lsp": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena@dcbf08520d9b6bccafc9f994284ea2be22458c56",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide",
+        "--open-web-dashboard",
+        "False"
+      ],
+      "includeTools": [
+        "find_symbol",
+        "find_referencing_symbols",
+        "get_symbols_overview",
+        "rename_symbol",
+        "activate_project",
+        "list_dir",
+        "find_file"
+      ]
+    },
+    "hashline": {
+      "command": "/opt/homebrew/bin/bunx",
+      "args": [
+        "mcp-hashline-edit-server@0.2.0"
+      ]
+    },
+    "fileops": {
+      "command": "/opt/homebrew/bin/node",
+      "args": [
+        "/Users/luisdeburnay/work/reins/scripts/fileops-mcp.mjs"
+      ]
+    },
+    "context7": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@2.1.1"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking@2025.12.18"
+      ]
+    },
+    "playwright": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@0.0.68"
+      ]
+    }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "name": "ecc-session-start",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/session-start.js",
+            "description": "Load previous session context and detect project type"
+          }
+        ]
+      }
+    ],
+    "BeforeTool": [
+      {
+        "matcher": "run_shell_command",
+        "hooks": [
+          {
+            "name": "ecc-auto-tmux-dev",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js pre:bash:auto-tmux-dev scripts/hooks/auto-tmux-dev.js standard,strict",
+            "description": "Auto-start dev servers in tmux"
+          },
+          {
+            "name": "ecc-tmux-reminder",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js pre:bash:tmux-reminder scripts/hooks/pre-bash-tmux-reminder.js standard,strict",
+            "description": "Remind to use tmux for long-running commands"
+          },
+          {
+            "name": "ecc-git-push-reminder",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js pre:bash:git-push-reminder scripts/hooks/pre-bash-git-push-reminder.js standard,strict",
+            "description": "Review changes before git push"
+          },
+          {
+            "name": "ecc-dev-server-block",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js pre:bash:dev-server-block scripts/hooks/pre-bash-dev-server-block.js strict",
+            "description": "Block non-tmux dev server starts (strict mode)"
+          }
+        ]
+      },
+      {
+        "matcher": "write_file",
+        "hooks": [
+          {
+            "name": "ecc-doc-file-warning",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js pre:write:doc-file-warning scripts/hooks/doc-file-warning.js standard,strict",
+            "description": "Warn about non-standard documentation files"
+          }
+        ]
+      },
+      {
+        "matcher": "replace|write_file",
+        "hooks": [
+          {
+            "name": "ecc-suggest-compact",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js pre:edit:suggest-compact scripts/hooks/suggest-compact.js standard,strict",
+            "description": "Suggest manual compaction at logical intervals"
+          }
+        ]
+      }
+    ],
+    "AfterTool": [
+      {
+        "matcher": "run_shell_command",
+        "hooks": [
+          {
+            "name": "ecc-pr-created",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js post:bash:pr-created scripts/hooks/post-bash-pr-created.js standard,strict",
+            "description": "Report PR creation details"
+          },
+          {
+            "name": "ecc-build-complete",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js post:bash:build-complete scripts/hooks/post-bash-build-complete.js standard,strict",
+            "description": "Notify on build completion"
+          }
+        ]
+      },
+      {
+        "matcher": "replace|write_file",
+        "hooks": [
+          {
+            "name": "ecc-quality-gate",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js post:edit:quality-gate scripts/hooks/quality-gate.js standard,strict",
+            "description": "Run lightweight quality checks after file edits"
+          }
+        ]
+      },
+      {
+        "matcher": "replace",
+        "hooks": [
+          {
+            "name": "ecc-post-edit-format",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js post:edit:format scripts/hooks/post-edit-format.js standard,strict",
+            "description": "Auto-format JS/TS files after edits"
+          },
+          {
+            "name": "ecc-post-edit-typecheck",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js post:edit:typecheck scripts/hooks/post-edit-typecheck.js standard,strict",
+            "description": "TypeScript check after editing TS files"
+          },
+          {
+            "name": "ecc-post-edit-console-warn",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js post:edit:console-warn scripts/hooks/post-edit-console-warn.js standard,strict",
+            "description": "Warn about console.log in edited files"
+          }
+        ]
+      }
+    ],
+    "AfterAgent": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "name": "ecc-check-console-log",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js post:stop:console-log scripts/hooks/check-console-log.js standard,strict",
+            "description": "Check modified files for console.log"
+          },
+          {
+            "name": "ecc-session-end",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/session-end.js",
+            "description": "Persist session learnings"
+          },
+          {
+            "name": "ecc-evaluate-session",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/run-with-flags.js post:stop:evaluate scripts/hooks/evaluate-session.js standard,strict",
+            "description": "Extract reusable patterns from sessions"
+          },
+          {
+            "name": "ecc-cost-tracker",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/cost-tracker.js",
+            "description": "Track session usage costs"
+          }
+        ]
+      }
+    ],
+    "PreCompress": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "name": "ecc-pre-compact",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/pre-compact.js",
+            "description": "Save state before context compaction"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "name": "ecc-session-end-marker",
+            "type": "command",
+            "command": "node $HOME/.gemini/scripts/hooks/gemini-hook-adapter.js $HOME/.gemini/scripts/hooks/session-end-marker.js",
+            "description": "Mark session end"
+          }
+        ]
+      }
+    ]
+  },
+  "hooksConfig": {
+    "enabled": true,
+    "disabled": [],
+    "notifications": true
+  },
+  "general": {
+    "sessionRetention": {
+      "warningAcknowledged": true,
+      "enabled": true,
+      "maxAge": "30d"
+    }
+  }
+}

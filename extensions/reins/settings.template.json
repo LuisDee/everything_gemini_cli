@@ -1,0 +1,50 @@
+{
+  "subagents": true,
+  "experimental": {
+    "enableAgents": true
+  },
+  "mcpServers": {
+    "lsp": {
+      "command": "__UVX__",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena@dcbf08520d9b6bccafc9f994284ea2be22458c56",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide",
+        "--open-web-dashboard",
+        "False"
+      ],
+      "includeTools": [
+        "find_symbol",
+        "find_referencing_symbols",
+        "get_symbols_overview",
+        "rename_symbol",
+        "activate_project",
+        "list_dir",
+        "find_file"
+      ]
+    },
+    "hashline": {
+      "command": "__BUNX__",
+      "args": ["mcp-hashline-edit-server@0.2.0"]
+    },
+    "context7": {
+      "command": "__NPX__",
+      "args": ["-y", "@upstash/context7-mcp@2.1.1"]
+    },
+    "sequential-thinking": {
+      "command": "__NPX__",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@2025.12.18"]
+    },
+    "playwright": {
+      "command": "__NPX__",
+      "args": ["-y", "@playwright/mcp@0.0.68"]
+    },
+    "docker": {
+      "command": "__DOCKER__",
+      "args": ["mcp", "gateway", "run"]
+    }
+  }
+}
