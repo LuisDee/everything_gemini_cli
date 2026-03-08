@@ -85,6 +85,19 @@
         ]
       }
     ],
+    "BeforeModel": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "name": "ecc-prompt-improver",
+            "type": "command",
+            "command": "python3 $HOME/.gemini/scripts/hooks/improve-prompt.py",
+            "description": "Evaluate prompt clarity and ask clarifying questions for vague requests"
+          }
+        ]
+      }
+    ],
     "BeforeTool": [
       {
         "matcher": "run_shell_command",

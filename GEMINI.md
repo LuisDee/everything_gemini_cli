@@ -76,6 +76,8 @@
 | ai-first-engineering | AI agent engineering operating model |
 | continuous-agent-loop | Autonomous agent loops with quality gates |
 | continuous-learning | Extract patterns from sessions |
+| prompt-improver | BeforeModel hook evaluates prompt clarity, asks clarifying questions for vague requests |
+| ui-ux-pro-max | Design intelligence: 67 styles, 96 palettes, 57 fonts, BM25 search engine |
 <!-- END ECC RULES: skills -->
 
 <!-- BEGIN ECC RULES: hooks -->
