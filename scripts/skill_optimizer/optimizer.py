@@ -21,10 +21,12 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import signal
 import subprocess
 import sys
 import time
+import traceback
 import yaml
 from pathlib import Path
 from typing import Any
@@ -109,8 +111,36 @@ def _write_description(skill_name: str, description: str) -> None:
 
 
 def _backup_description(skill_name: str) -> str:
-    """Back up current description, return the original text."""
+    """Back up description to a restore file for crash recovery."""
+    skill_md = SKILLS_DIR / skill_name / "SKILL.md"
+    backup_file = SKILLS_DIR / skill_name / ".SKILL.md.gepa-backup"
+    shutil.copy2(skill_md, backup_file)
     return _read_current_description(skill_name)
+
+
+def _ensure_restored(skill_name: str) -> None:
+    """Restore from backup if one exists (crash recovery)."""
+    backup_file = SKILLS_DIR / skill_name / ".SKILL.md.gepa-backup"
+    if backup_file.exists():
+        skill_md = SKILLS_DIR / skill_name / "SKILL.md"
+        shutil.copy2(backup_file, skill_md)
+        backup_file.unlink()
+        print(f"[RECOVERY] Restored {skill_name} from backup after crash")
+
+
+def _cleanup_backup(skill_name: str) -> None:
+    """Remove backup file after successful restore."""
+    backup_file = SKILLS_DIR / skill_name / ".SKILL.md.gepa-backup"
+    backup_file.unlink(missing_ok=True)
+
+
+def _sanitize_prompt(prompt: str) -> str:
+    """Sanitize prompt to prevent injection via control characters."""
+    if not prompt or not isinstance(prompt, str):
+        raise ValueError("Invalid prompt")
+    if len(prompt) > 10000:
+        raise ValueError(f"Prompt too long ({len(prompt)} chars, max 10000)")
+    return "".join(c for c in prompt if c.isprintable() or c in "\n\t")
 
 
 # ── Real CLI invocation ──────────────────────────────────────────────
@@ -164,6 +194,7 @@ def _run_gemini_cli(prompt: str, timeout: int = INVOCATION_TIMEOUT) -> dict:
 
     _clear_hook_log()
 
+    prompt = _sanitize_prompt(prompt)
     cmd = ["gemini", "-y", "--prompt", prompt, "--output-format", "json"]
     try:
         proc = subprocess.Popen(
@@ -344,7 +375,10 @@ def run_optimization(
     if not train_examples:
         raise ValueError(f"No training examples in {data_file}")
 
-    # Back up the original description
+    # Crash recovery: restore from backup if previous run was killed
+    _ensure_restored(skill_name)
+
+    # Back up the original description (creates .gepa-backup file)
     original_desc = _backup_description(skill_name)
     seed = original_desc
 
@@ -392,6 +426,7 @@ def run_optimization(
     finally:
         # Always restore the original description
         _write_description(skill_name, original_desc)
+        _cleanup_backup(skill_name)
         _update_status(running=False)
 
     # Extract best score from GEPA result

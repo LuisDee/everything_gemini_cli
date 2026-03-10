@@ -17,6 +17,7 @@ import json
 import os
 import sys
 import time
+import traceback
 from pathlib import Path
 
 STATE_FILE = Path(__file__).parent / "orchestrator-state.json"
@@ -60,6 +61,7 @@ def run_skill(skill_name: str, max_calls: int, model: str) -> dict | None:
         return result
     except Exception as exc:
         print(f"[BATCH] ERROR on {skill_name}: {exc}")
+        traceback.print_exc()
         return None
 
 
