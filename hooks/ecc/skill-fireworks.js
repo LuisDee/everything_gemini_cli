@@ -10,6 +10,7 @@
  * Prerequisite: npm install -g firew0rks
  *
  * Usage as hook: reads BeforeTool JSON from stdin
+ * Usage as test: node skill-fireworks.js --test [skill-name]
  * Debug log: /tmp/fireworks-debug.log
  */
 
@@ -46,9 +47,9 @@ function findFramesDir() {
   return null;
 }
 
-// 8 frames from 150 total, ~120ms each = ~1s animation
-const FRAME_INDICES = [0, 20, 40, 60, 80, 100, 120, 140];
-const FRAME_DELAY_MS = 120;
+// 10 frames from 150 total, ~100ms each = ~1s animation
+const FRAME_INDICES = [0, 15, 30, 45, 60, 75, 90, 110, 130, 145];
+const FRAME_DELAY_MS = 100;
 
 // ── Synchronous sleep ───────────────────────────────────────────
 
@@ -67,11 +68,11 @@ function playAnimation(skillName) {
     return;
   }
 
-  // Preload frames
+  // Preload frames as strings for single-write buffering
   const frames = [];
   for (const idx of FRAME_INDICES) {
     try {
-      frames.push(fs.readFileSync(path.join(framesDir, `${idx}.txt`)));
+      frames.push(fs.readFileSync(path.join(framesDir, `${idx}.txt`), 'utf8'));
     } catch {}
   }
   if (frames.length === 0) {
@@ -103,7 +104,7 @@ function playAnimation(skillName) {
   } catch {}
   debug(`terminal: ${rows}x${cols}`);
 
-  // Build banner
+  // Pre-build banner strings
   const bannerText = ` SKILL ACTIVATED: ${skillName} `;
   const boxColor = '\x1b[95;1m';
   const textColor = '\x1b[97;1m';
@@ -112,39 +113,40 @@ function playAnimation(skillName) {
   const bannerMid = boxColor + '\u2551' + reset + textColor + bannerText + reset + boxColor + '\u2551' + reset;
   const bannerBot = boxColor + '\u255A' + '\u2550'.repeat(bannerText.length) + '\u255D' + reset;
   const bannerWidth = bannerText.length + 2;
+  const bannerStartRow = Math.max(1, Math.floor(rows / 2) - 1);
+  const bannerStartCol = Math.max(1, Math.floor((cols - bannerWidth) / 2) + 1);
+  const bannerOverlay =
+    `\x1b[${bannerStartRow};${bannerStartCol}H${bannerTop}` +
+    `\x1b[${bannerStartRow + 1};${bannerStartCol}H${bannerMid}` +
+    `\x1b[${bannerStartRow + 2};${bannerStartCol}H${bannerBot}`;
 
   try {
     // Switch to alternate screen buffer (ink is paused while hook runs)
-    fs.writeSync(ttyFd, '\x1b[?1049h');  // save + switch to alt buffer
-    fs.writeSync(ttyFd, '\x1b[?25l');    // hide cursor
-    fs.writeSync(ttyFd, '\x1b[2J');      // clear
+    fs.writeSync(ttyFd, '\x1b[?1049h\x1b[?25l');  // save + alt buffer + hide cursor
 
     for (let i = 0; i < frames.length; i++) {
-      fs.writeSync(ttyFd, '\x1b[H');     // cursor home
-      fs.writeSync(ttyFd, frames[i]);    // render frame
+      // Build entire frame as a single string to minimize write calls (reduces tearing)
+      let buf = '\x1b[H' + frames[i];  // cursor home + frame content
 
       // Overlay banner on last ~50% of frames
       if (i >= Math.floor(frames.length * 0.5)) {
-        const startRow = Math.max(1, Math.floor(rows / 2) - 1);
-        const startCol = Math.max(1, Math.floor((cols - bannerWidth) / 2) + 1);
-        fs.writeSync(ttyFd, `\x1b[${startRow};${startCol}H${bannerTop}`);
-        fs.writeSync(ttyFd, `\x1b[${startRow + 1};${startCol}H${bannerMid}`);
-        fs.writeSync(ttyFd, `\x1b[${startRow + 2};${startCol}H${bannerBot}`);
+        buf += bannerOverlay;
       }
 
+      // Single atomic write — minimizes tearing
+      fs.writeSync(ttyFd, buf);
       sleep(FRAME_DELAY_MS);
     }
 
     // Hold final frame briefly
-    sleep(300);
+    sleep(400);
     debug('animation complete');
 
   } catch (err) {
     debug(`animation error: ${err.message}`);
   } finally {
     // Restore: show cursor, switch back to main screen buffer
-    fs.writeSync(ttyFd, '\x1b[?25h');    // show cursor
-    fs.writeSync(ttyFd, '\x1b[?1049l');  // restore main buffer
+    fs.writeSync(ttyFd, '\x1b[?25h\x1b[?1049l');  // show cursor + restore main buffer
     fs.closeSync(ttyFd);
   }
 }
@@ -171,7 +173,6 @@ async function runHook() {
   } catch {}
 
   // Play animation inline — writes to /dev/tty, not stdout
-  // Hook blocks agent loop so Gemini is paused during animation
   playAnimation(skillName);
 
   // Output JSON to stdout (the only thing Gemini CLI reads)
@@ -181,4 +182,9 @@ async function runHook() {
 
 // ── Dispatch ────────────────────────────────────────────────────
 
-runHook();
+if (process.argv[2] === '--test') {
+  // Direct test mode: node skill-fireworks.js --test [skill-name]
+  playAnimation(process.argv[3] || 'test-skill');
+} else {
+  runHook();
+}
