@@ -2,6 +2,11 @@
   "skill_name": "ui-ux-pro-max",
   "seed_description": "Use when generating design systems, choosing UI styles, selecting color palettes and font pairings, or getting stack-specific UI guidelines. Contains 67 styles, 96 palettes, 57 fonts across 13 tech stacks with BM25 search.",
   "best_description": "Use when generating design systems, choosing UI styles, selecting color palettes and font pairings, or getting stack-specific UI guidelines. Contains 67 styles, 96 palettes, 57 fonts across 13 tech stacks with BM25 search.",
-  "best_score": null,
-  "timestamp": "2026-03-10T04:41:58"
+  "best_score": 0.5,
+  "seed_score": 0.5,
+  "all_candidate_scores": [
+    0.5
+  ],
+  "num_candidates": 1,
+  "timestamp": "2026-03-10T10:08:10"
 }
