@@ -62,6 +62,18 @@ def _litellm_available() -> bool:
         return False
 
 
+_MODEL_MAP = {
+    "claude-sonnet": "gemini-2.5-flash",
+    "claude-opus": "gemini-2.5-pro",
+    "claude-haiku": "gemini-2.5-flash",
+}
+
+
+def _map_model_name(model: str) -> str:
+    """Map LiteLLM proxy model names to Gemini REST API model names."""
+    return _MODEL_MAP.get(model, model)
+
+
 def call_llm(
     prompt: str,
     system: str = "",
@@ -80,7 +92,9 @@ def call_llm(
     # Fall back to Gemini API
     gemini_key = _get_gemini_key()
     if gemini_key:
-        return _call_gemini(prompt, system, gemini_key, max_tokens, temperature)
+        # Map LiteLLM model names to Gemini models
+        gemini_model = _map_model_name(model)
+        return _call_gemini(prompt, system, gemini_key, max_tokens, temperature, gemini_model)
 
     raise RuntimeError(
         "No LLM backend available. Start LiteLLM proxy or set GEMINI_API_KEY."
@@ -130,9 +144,9 @@ def _call_gemini(
     api_key: str,
     max_tokens: int,
     temperature: float,
+    model: str = "gemini-2.5-flash",
 ) -> str:
     """Call Gemini REST API directly."""
-    model = "gemini-2.5-flash"
     url = (
         f"https://generativelanguage.googleapis.com/v1beta/"
         f"models/{model}:generateContent?key={api_key}"

@@ -10,6 +10,7 @@ import sys
 import yaml
 from pathlib import Path
 
+from scripts.utils import DESCRIPTION_MAX_CHARS
 
 # Gemini CLI allowed frontmatter fields
 ALLOWED_PROPERTIES = {"name", "description", "origin", "tools"}
@@ -91,10 +92,10 @@ def validate_skill(skill_path: str | Path) -> tuple[bool, str]:
     if description:
         if "<" in description or ">" in description:
             return False, "Description cannot contain angle brackets (< or >)"
-        if len(description) > 1024:
+        if len(description) > DESCRIPTION_MAX_CHARS:
             return False, (
                 f"Description is too long ({len(description)} characters). "
-                "Maximum is 1024 characters."
+                f"Maximum is {DESCRIPTION_MAX_CHARS} characters."
             )
 
     return True, "Skill is valid!"

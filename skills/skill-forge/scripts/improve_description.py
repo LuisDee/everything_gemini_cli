@@ -13,6 +13,8 @@ import re
 import sys
 from pathlib import Path
 
+from scripts.utils import DESCRIPTION_MAX_CHARS
+
 from scripts.gemini_api import call_llm, extract_tag
 from scripts.utils import parse_skill_md
 
@@ -114,14 +116,14 @@ Respond with only the new description in <new_description> tags."""
         "response": response,
         "parsed_description": description,
         "char_count": len(description),
-        "over_limit": len(description) > 1024,
+        "over_limit": len(description) > DESCRIPTION_MAX_CHARS,
     }
 
-    # If over 1024 chars, ask the model to shorten
-    if len(description) > 1024:
+    # If over limit, ask the model to shorten
+    if len(description) > DESCRIPTION_MAX_CHARS:
         shorten_prompt = (
             f"Your description is {len(description)} characters, which exceeds "
-            f"the 1024 character limit. Rewrite it under 1024 characters while "
+            f"the {DESCRIPTION_MAX_CHARS} character limit. Rewrite it under {DESCRIPTION_MAX_CHARS} characters while "
             f"preserving the most important trigger words. "
             f"Respond with only the description in <new_description> tags."
         )

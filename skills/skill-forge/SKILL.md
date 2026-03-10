@@ -198,7 +198,7 @@ After each run completes, save timing data to `timing.json` in the run directory
 
 4. **Launch the viewer:**
    ```bash
-   nohup python3 skill-forge-path/eval-viewer/generate_review.py \
+   nohup python3 ~/.gemini/skills/skill-forge/eval-viewer/generate_review.py \
      <workspace>/iteration-N \
      --skill-name "my-skill" \
      --benchmark <workspace>/iteration-N/benchmark.json \

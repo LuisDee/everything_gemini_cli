@@ -8,6 +8,7 @@ from pathlib import Path
 
 SKILLS_DIR = Path.home() / ".gemini" / "skills"
 HOOK_LOG = Path("/tmp/gemini-skill-activations.log")
+DESCRIPTION_MAX_CHARS = 1024  # Gemini CLI frontmatter limit
 
 
 def parse_skill_md(skill_path: Path) -> tuple[str, str, str]:
