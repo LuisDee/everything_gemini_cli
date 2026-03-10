@@ -2,18 +2,18 @@
 /**
  * skill-fireworks.js
  *
- * BeforeTool hook that plays a fireworks celebration animation
- * when a skill is activated. Uses firew0rks ASCII art frames
- * rendered to the alternate screen buffer via /dev/tty.
+ * BeforeTool hook that celebrates skill activation with a fireworks
+ * animation rendered to /dev/tty via a detached background process.
  *
- * The hook outputs {"decision":"allow"} immediately, then spawns
- * a detached child process for the animation — zero latency added
- * to the Gemini CLI pipeline.
+ * Uses Gemini CLI's systemMessage for an inline banner (guaranteed visible),
+ * then spawns a brief fireworks animation that writes directly to /dev/tty
+ * without switching screen buffers (compatible with ink-based renderers).
  *
  * Prerequisite: npm install -g firew0rks
  *
  * Usage as hook: reads BeforeTool JSON from stdin
  * Usage as animator: node skill-fireworks.js --animate <skill-name>
+ * Debug log: /tmp/fireworks-debug.log
  */
 
 'use strict';
@@ -21,6 +21,14 @@
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
+
+const DEBUG_LOG = '/tmp/fireworks-debug.log';
+
+function debug(msg) {
+  try {
+    fs.appendFileSync(DEBUG_LOG, `[${new Date().toISOString()}] ${msg}\n`);
+  } catch {}
+}
 
 // ── Frame discovery ─────────────────────────────────────────────
 
@@ -43,9 +51,9 @@ function findFramesDir() {
   return null;
 }
 
-// Frame indices to play (15 frames from 150 total, ~100ms each = 1.5s)
-const FRAME_INDICES = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140];
-const FRAME_DELAY_MS = 100;
+// Play 8 frames from 150 total, ~120ms each = ~1s animation
+const FRAME_INDICES = [0, 20, 40, 60, 80, 100, 120, 140];
+const FRAME_DELAY_MS = 120;
 
 // ── Synchronous sleep (safe in detached child) ──────────────────
 
@@ -53,48 +61,17 @@ function sleep(ms) {
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 }
 
-// ── Banner rendering ────────────────────────────────────────────
-
-function buildBanner(skillName) {
-  const text = ` SKILL ACTIVATED: ${skillName} `;
-  const inner = text.length;
-  const top    = '\u2554' + '\u2550'.repeat(inner) + '\u2557';
-  const middle = '\u2551' + text + '\u2551';
-  const bottom = '\u255A' + '\u2550'.repeat(inner) + '\u255D';
-  return { top, middle, bottom, width: inner + 2 };
-}
-
-function overlayBanner(ttyFd, skillName, rows, cols) {
-  const banner = buildBanner(skillName);
-  const startRow = Math.max(1, Math.floor(rows / 2) - 1);
-  const startCol = Math.max(1, Math.floor((cols - banner.width) / 2) + 1);
-
-  // Bright magenta box with bold white text
-  const boxColor = '\x1b[95;1m';    // bright magenta, bold
-  const textColor = '\x1b[97;1m';   // bright white, bold
-  const reset = '\x1b[0m';
-
-  const lines = [banner.top, banner.middle, banner.bottom];
-  for (let i = 0; i < lines.length; i++) {
-    const row = startRow + i;
-    let line = lines[i];
-    // Color the middle line differently (text portion)
-    if (i === 1) {
-      line = boxColor + '\u2551' + reset + textColor + ` SKILL ACTIVATED: ${skillName} ` + reset + boxColor + '\u2551' + reset;
-    } else {
-      line = boxColor + line + reset;
-    }
-    fs.writeSync(ttyFd, `\x1b[${row};${startCol}H${line}`);
-  }
-}
-
-// ── Animation ───────────────────────────────────────────────────
+// ── Animation (writes to /dev/tty, no alt screen buffer) ────────
 
 function runAnimation(skillName) {
+  debug(`animate start: skill=${skillName}`);
+
   const framesDir = findFramesDir();
   if (!framesDir) {
+    debug('no frames dir found, exiting');
     process.exit(0);
   }
+  debug(`frames dir: ${framesDir}`);
 
   // Preload frames into memory
   const frames = [];
@@ -103,28 +80,28 @@ function runAnimation(skillName) {
     try {
       frames.push(fs.readFileSync(framePath));
     } catch {
-      // Skip missing frames
+      debug(`missing frame: ${framePath}`);
     }
   }
 
   if (frames.length === 0) {
+    debug('no frames loaded, exiting');
     process.exit(0);
   }
+  debug(`loaded ${frames.length} frames`);
 
   let ttyFd;
   try {
     ttyFd = fs.openSync('/dev/tty', 'w');
-  } catch {
-    // No TTY available (e.g. piped output) — exit silently
+  } catch (err) {
+    debug(`cannot open /dev/tty: ${err.message}`);
     process.exit(0);
   }
+  debug('opened /dev/tty for writing');
 
   // Get terminal dimensions
   let rows = 41, cols = 80;
   try {
-    const ttyRead = fs.openSync('/dev/tty', 'r');
-    const binding = process.binding('tty_wrap');
-    // Fallback: try environment or stty
     const { execSync } = require('child_process');
     const size = execSync('stty size < /dev/tty 2>/dev/null', {
       encoding: 'utf8',
@@ -134,35 +111,58 @@ function runAnimation(skillName) {
       rows = parseInt(size[0], 10) || 41;
       cols = parseInt(size[1], 10) || 80;
     }
-    fs.closeSync(ttyRead);
   } catch {}
+  debug(`terminal: ${rows}x${cols}`);
+
+  // Build banner
+  const bannerText = ` SKILL ACTIVATED: ${skillName} `;
+  const bannerWidth = bannerText.length + 2;
+  const boxColor = '\x1b[95;1m';
+  const textColor = '\x1b[97;1m';
+  const reset = '\x1b[0m';
+  const bannerTop = boxColor + '\u2554' + '\u2550'.repeat(bannerText.length) + '\u2557' + reset;
+  const bannerMid = boxColor + '\u2551' + reset + textColor + bannerText + reset + boxColor + '\u2551' + reset;
+  const bannerBot = boxColor + '\u255A' + '\u2550'.repeat(bannerText.length) + '\u255D' + reset;
 
   try {
-    // Switch to alternate screen buffer, hide cursor, clear
-    fs.writeSync(ttyFd, '\x1b[?1049h');  // save screen + switch to alt buffer
-    fs.writeSync(ttyFd, '\x1b[?25l');    // hide cursor
-    fs.writeSync(ttyFd, '\x1b[2J');      // clear screen
+    // Save cursor position, hide cursor
+    fs.writeSync(ttyFd, '\x1b7');       // save cursor
+    fs.writeSync(ttyFd, '\x1b[?25l');   // hide cursor
+    fs.writeSync(ttyFd, '\n'.repeat(rows)); // scroll down to make room
+    debug('wrote scroll padding');
 
-    // Play frames
+    // Play frames — position at top-left of the scrolled region
     for (let i = 0; i < frames.length; i++) {
-      fs.writeSync(ttyFd, '\x1b[H');     // cursor home
-      fs.writeSync(ttyFd, frames[i]);    // render frame
+      // Move cursor to top of the animation area
+      fs.writeSync(ttyFd, `\x1b[${rows}A`);  // move up N rows
+      fs.writeSync(ttyFd, '\x1b[H');          // cursor home (top-left)
+      fs.writeSync(ttyFd, '\x1b[2J');         // clear screen
+      fs.writeSync(ttyFd, '\x1b[H');          // cursor home again
+      fs.writeSync(ttyFd, frames[i]);         // render frame
 
-      // Overlay banner on last ~60% of frames (after explosion starts)
-      if (i >= Math.floor(frames.length * 0.4)) {
-        overlayBanner(ttyFd, skillName, rows, cols);
+      // Overlay banner on last ~50% of frames
+      if (i >= Math.floor(frames.length * 0.5)) {
+        const startRow = Math.max(1, Math.floor(rows / 2) - 1);
+        const startCol = Math.max(1, Math.floor((cols - bannerWidth) / 2) + 1);
+        fs.writeSync(ttyFd, `\x1b[${startRow};${startCol}H${bannerTop}`);
+        fs.writeSync(ttyFd, `\x1b[${startRow + 1};${startCol}H${bannerMid}`);
+        fs.writeSync(ttyFd, `\x1b[${startRow + 2};${startCol}H${bannerBot}`);
       }
 
       sleep(FRAME_DELAY_MS);
     }
 
-    // Hold final frame with banner briefly
-    sleep(200);
+    // Hold final frame briefly
+    sleep(300);
+    debug('animation complete');
 
+  } catch (err) {
+    debug(`animation error: ${err.message}\n${err.stack}`);
   } finally {
-    // Restore: show cursor, switch back to main buffer
-    fs.writeSync(ttyFd, '\x1b[?25h');    // show cursor
-    fs.writeSync(ttyFd, '\x1b[?1049l');  // restore main screen buffer
+    // Clear and restore
+    fs.writeSync(ttyFd, '\x1b[2J');     // clear screen
+    fs.writeSync(ttyFd, '\x1b[?25h');   // show cursor
+    fs.writeSync(ttyFd, '\x1b8');       // restore cursor
     fs.closeSync(ttyFd);
   }
 
@@ -184,22 +184,31 @@ function readStdin() {
 async function runHook() {
   const raw = await readStdin();
 
-  // Always allow immediately
-  process.stdout.write(JSON.stringify({ decision: 'allow' }));
-
   let skillName = 'unknown';
   try {
     const input = JSON.parse(raw);
     skillName = input.tool_input?.name || input.tool_input?.skill_name || 'unknown';
   } catch {}
 
+  // Return allow + systemMessage banner (guaranteed visible by Gemini CLI)
+  const banner = `\x1b[95;1m\u2728 SKILL ACTIVATED: ${skillName} \u2728\x1b[0m`;
+  process.stdout.write(JSON.stringify({
+    decision: 'allow',
+    systemMessage: banner,
+  }));
+
   // Spawn animation as detached background process
-  const child = spawn(process.execPath, [__filename, '--animate', skillName], {
-    detached: true,
-    stdio: 'ignore',
-    env: { ...process.env, NODE_NO_WARNINGS: '1' },
-  });
-  child.unref();
+  try {
+    const child = spawn(process.execPath, [__filename, '--animate', skillName], {
+      detached: true,
+      stdio: 'ignore',
+      env: { ...process.env, NODE_NO_WARNINGS: '1' },
+    });
+    child.unref();
+    debug(`spawned animate child pid=${child.pid} for skill=${skillName}`);
+  } catch (err) {
+    debug(`spawn failed: ${err.message}`);
+  }
 
   process.exit(0);
 }
