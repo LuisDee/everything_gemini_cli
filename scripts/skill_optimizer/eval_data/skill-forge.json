@@ -1,0 +1,109 @@
+{
+  "train": [
+    {
+      "prompt": "I want to create a new skill for handling database migrations, can you help me build it from scratch?",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Run eval test cases against my tdd-workflow skill and show me the results in a viewer",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "The api-design skill keeps producing wrong output formatting, I need to improve it based on the test failures",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Optimize the description of my python-patterns skill so it triggers more reliably when users ask about Python best practices",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Benchmark my skill with 3 runs per configuration and show me the variance analysis with mean and stddev",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I made a new SKILL.md for docker deployment, can you validate it and package it as a .skill file?",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "My skill doesn't trigger when users ask about it in casual language, help me fix the description field",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "I want to do a blind A/B comparison between the old and new versions of my code-review skill",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write unit tests for this Python function that calculates fibonacci numbers",
+      "expected_skill": "skill-forge",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Help me debug this segfault in my C++ program",
+      "expected_skill": "skill-forge",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Deploy this Express.js app to AWS using Docker Compose",
+      "expected_skill": "skill-forge",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Review this pull request for security vulnerabilities",
+      "expected_skill": "skill-forge",
+      "should_activate": false,
+      "difficulty": "medium"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "I've been iterating on this skill for PDF processing but the outputs keep regressing, help me set up a proper eval pipeline with before/after comparison",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create a skill that helps users write better git commit messages, then test it with realistic prompts",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Run the trigger accuracy optimizer on my search-first skill for 5 iterations with train/test split",
+      "expected_skill": "skill-forge",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Set up PostgreSQL connection pooling with PgBouncer",
+      "expected_skill": "skill-forge",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Refactor this React component to use hooks instead of class components",
+      "expected_skill": "skill-forge",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "skill-forge"
+}
