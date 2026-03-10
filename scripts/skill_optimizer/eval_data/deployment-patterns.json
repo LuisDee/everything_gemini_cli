@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Set up a CI/CD pipeline with GitHub Actions for the Node.js app",
+      "expected_skill": "deployment-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Implement blue-green deployment to avoid downtime during releases",
+      "expected_skill": "deployment-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need a health check endpoint and graceful shutdown so Kubernetes knows when to restart pods",
+      "expected_skill": "deployment-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "How do I roll back safely if the latest release breaks production",
+      "expected_skill": "deployment-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "We keep having outages when we ship new code, I need a safer release process",
+      "expected_skill": "deployment-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Every release is a gamble, sometimes things break and we cannot go back quickly",
+      "expected_skill": "deployment-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write a React component for the user profile page",
+      "expected_skill": "deployment-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Optimize the SQL query for the leaderboard, it times out",
+      "expected_skill": "deployment-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Create a production readiness checklist for the microservices architecture",
+      "expected_skill": "deployment-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I want zero downtime when we push updates, even during database migrations",
+      "expected_skill": "deployment-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write unit tests for the authentication service",
+      "expected_skill": "deployment-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Build a Dockerfile with multi-stage builds",
+      "expected_skill": "deployment-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "deployment-patterns"
+}

@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Extract reusable patterns from this session and save them as learned instincts",
+      "expected_skill": "continuous-learning",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Learn from the work I just completed and create atomic instincts with confidence scores",
+      "expected_skill": "continuous-learning",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Save the patterns from this debugging session so the agent remembers them next time",
+      "expected_skill": "continuous-learning",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I solved a tricky problem, make sure the agent can apply this solution in future sessions",
+      "expected_skill": "continuous-learning",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The agent keeps making the same mistakes, I want it to learn from corrections",
+      "expected_skill": "continuous-learning",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "After each session I want the useful insights to persist and improve future performance",
+      "expected_skill": "continuous-learning",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Deploy the app to Kubernetes with rolling updates",
+      "expected_skill": "continuous-learning",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write a REST API for the order management system",
+      "expected_skill": "continuous-learning",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Manage and evolve the saved instincts, promote high-confidence ones to skills",
+      "expected_skill": "continuous-learning",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The agent forgets everything between sessions, I want institutional knowledge",
+      "expected_skill": "continuous-learning",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Build a React dashboard with charts",
+      "expected_skill": "continuous-learning",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Optimize the PostgreSQL indexes for the search table",
+      "expected_skill": "continuous-learning",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "continuous-learning"
+}

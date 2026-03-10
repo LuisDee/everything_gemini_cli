@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Set up eval-first execution for this complex refactoring task",
+      "expected_skill": "agentic-engineering",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Decompose this large feature into smaller testable pieces with cost-aware model routing",
+      "expected_skill": "agentic-engineering",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need to break this epic into smaller tasks that can be independently validated",
+      "expected_skill": "agentic-engineering",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Route the simple parts to a cheaper model and only use the expensive one for hard decisions",
+      "expected_skill": "agentic-engineering",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "This task is too big for one shot, help me structure it so each piece has its own eval",
+      "expected_skill": "agentic-engineering",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "I want the agent to validate its own work at every step before continuing",
+      "expected_skill": "agentic-engineering",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Build a React form with input validation",
+      "expected_skill": "agentic-engineering",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write a Dockerfile for the Python backend",
+      "expected_skill": "agentic-engineering",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Plan the implementation of this feature using eval-driven development",
+      "expected_skill": "agentic-engineering",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I keep running out of budget because the agent uses the expensive model for trivial tasks",
+      "expected_skill": "agentic-engineering",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write a SQL migration for the users table",
+      "expected_skill": "agentic-engineering",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Optimize the webpack build configuration",
+      "expected_skill": "agentic-engineering",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "agentic-engineering"
+}

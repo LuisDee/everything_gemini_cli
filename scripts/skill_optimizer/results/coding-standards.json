@@ -1,0 +1,7 @@
+{
+  "skill_name": "coding-standards",
+  "seed_description": "Use when writing or reviewing TypeScript, JavaScript, React, or Node.js code. Enforces naming conventions, immutability patterns, error handling, async patterns, and function size limits.",
+  "best_description": "Use when writing or reviewing TypeScript, JavaScript, React, or Node.js code. Enforces naming conventions, immutability patterns, error handling, async patterns, and function size limits.",
+  "best_score": null,
+  "timestamp": "2026-03-10T03:13:16"
+}

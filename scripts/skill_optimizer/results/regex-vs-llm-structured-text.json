@@ -1,0 +1,7 @@
+{
+  "skill_name": "regex-vs-llm-structured-text",
+  "seed_description": "Use when deciding between regex and LLM for parsing or extracting data from structured text. Decision framework: start with regex, add LLM only for low-confidence edge cases.",
+  "best_description": "Use when deciding between regex and LLM for parsing or extracting data from structured text. Decision framework: start with regex, add LLM only for low-confidence edge cases.",
+  "best_score": null,
+  "timestamp": "2026-03-10T04:23:36"
+}

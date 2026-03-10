@@ -1,0 +1,7 @@
+{
+  "skill_name": "plankton-code-quality",
+  "seed_description": "Use when setting up auto-formatting and linting on every file edit. Enforces write-time code quality with Plankton -- formatting, linting, and agent-powered fixes via hooks.",
+  "best_description": "Use when setting up auto-formatting and linting on every file edit. Enforces write-time code quality with Plankton -- formatting, linting, and agent-powered fixes via hooks.",
+  "best_score": null,
+  "timestamp": "2026-03-10T04:05:10"
+}

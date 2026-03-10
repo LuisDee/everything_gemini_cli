@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Should I use regex or an LLM to parse this structured log file",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Decision framework for choosing between regex and LLM for data extraction",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need to extract fields from semi-structured text, is regex enough or do I need AI",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The regex is getting too complex for edge cases, should I switch to an LLM approach",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I have messy text that is mostly structured but sometimes has weird formatting",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Parsing works 95 percent of the time but the remaining 5 percent is unpredictable",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Build a React dashboard with data visualizations",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Deploy the app using Kubernetes",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Evaluate whether regex or an LLM would be more cost-effective for parsing invoices",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The data format is mostly consistent but occasionally has typos that break the parser",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create a Docker Compose setup for local development",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write Python tests for the API client",
+      "expected_skill": "regex-vs-llm-structured-text",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "regex-vs-llm-structured-text"
+}

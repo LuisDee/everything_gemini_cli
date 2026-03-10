@@ -1,0 +1,7 @@
+{
+  "skill_name": "continuous-agent-loop",
+  "seed_description": "Use when running autonomous agent loops, setting up continuous agent pipelines, or implementing quality gates with evals and recovery controls for long-running tasks.",
+  "best_description": "Use when running autonomous agent loops, setting up continuous agent pipelines, or implementing quality gates with evals and recovery controls for long-running tasks.",
+  "best_score": null,
+  "timestamp": "2026-03-10T03:21:46"
+}

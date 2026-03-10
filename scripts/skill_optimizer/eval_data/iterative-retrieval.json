@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Search for code across the codebase, the initial grep was too broad",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Progressively refine the search to find the relevant files for this bug",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need to find where this feature is implemented but the codebase is huge",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The subagent keeps loading irrelevant files, narrow down the context retrieval",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "There are thousands of files and I cannot figure out which ones matter for this change",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The agent is drowning in context, it needs to be smarter about which files to load",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Deploy the app with blue-green deployment strategy",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write a database migration for the new schema",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Use iterative search queries to narrow down which modules handle authentication",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I grep for the function name and get 500 results, help me find the right one",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create a React component with error boundaries",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up pytest fixtures for the test suite",
+      "expected_skill": "iterative-retrieval",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "iterative-retrieval"
+}

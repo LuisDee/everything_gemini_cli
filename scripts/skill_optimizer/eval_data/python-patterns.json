@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Refactor this Python code to use proper type hints and dataclasses",
+      "expected_skill": "python-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Make this Python module follow PEP 8 style and use list comprehensions",
+      "expected_skill": "python-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need to handle exceptions properly in this async Python service",
+      "expected_skill": "python-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Convert these nested try/except blocks into Pythonic EAFP patterns",
+      "expected_skill": "python-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "This Python script works but it feels like I wrote Java in Python",
+      "expected_skill": "python-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Help me write this data processing script in a clean and maintainable way",
+      "expected_skill": "python-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Set up Docker Compose for the microservices stack",
+      "expected_skill": "python-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Design REST API endpoints for the order management system",
+      "expected_skill": "python-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Use async/await properly in this Python FastAPI application",
+      "expected_skill": "python-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The code has too many classes for simple data, there must be a simpler Pythonic way",
+      "expected_skill": "python-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write E2E tests for the user registration flow",
+      "expected_skill": "python-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Create a CI/CD pipeline for the application",
+      "expected_skill": "python-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "python-patterns"
+}

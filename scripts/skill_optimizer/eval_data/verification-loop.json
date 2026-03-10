@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Run build, tests, and lint checks before I commit these changes",
+      "expected_skill": "verification-loop",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Verify that my code changes pass all checks before pushing",
+      "expected_skill": "verification-loop",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I changed several files and want to make sure nothing is broken before I push",
+      "expected_skill": "verification-loop",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Run the full verification suite including type checks on my latest changes",
+      "expected_skill": "verification-loop",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I am about to merge this branch, do a final sanity check on everything",
+      "expected_skill": "verification-loop",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Last time I pushed without checking and broke the build, do not let that happen again",
+      "expected_skill": "verification-loop",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Design a color palette for a healthcare app",
+      "expected_skill": "verification-loop",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write a database migration to add an index",
+      "expected_skill": "verification-loop",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Check that the build is green and all linters pass before I create the PR",
+      "expected_skill": "verification-loop",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I want to ship this confidently, make sure absolutely nothing is broken",
+      "expected_skill": "verification-loop",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create Playwright tests for the checkout flow",
+      "expected_skill": "verification-loop",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up Redis caching for the API responses",
+      "expected_skill": "verification-loop",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "verification-loop"
+}

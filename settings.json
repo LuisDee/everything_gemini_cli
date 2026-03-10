@@ -87,6 +87,17 @@
     ],
     "BeforeTool": [
       {
+        "matcher": "activate_skill",
+        "hooks": [
+          {
+            "name": "ecc-skill-activation-logger",
+            "type": "command",
+            "command": "node $HOME/.gemini/hooks/ecc/skill-activation-logger.js",
+            "description": "Log skill activations to /tmp/gemini-skill-activations.log"
+          }
+        ]
+      },
+      {
         "matcher": "run_shell_command",
         "hooks": [
           {

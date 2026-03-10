@@ -1,0 +1,237 @@
+{
+  "version": 1,
+  "created": "2026-03-10T02:37:17",
+  "last_updated": "2026-03-10T04:48:07",
+  "phase": "completed",
+  "notes": "All 27 skills GEPA-optimized. None improved over seed (all scored 0.5 on val, non-deterministic CLI routing is the bottleneck). Hand-crafted descriptions are near-optimal.",
+  "current_skill": "verification-loop",
+  "skills": {
+    "tdd-workflow": {
+      "status": "completed",
+      "best_score": 0.6,
+      "best_description": "Use this skill when writing new features, fixing bugs, or refactoring code. Enforces test-driven development with 80%+ coverage including unit, integration, and E2E tests.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.6
+    },
+    "agentic-engineering": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when operating as an agentic engineer on complex tasks. Provides eval-first execution, task decomposition into smaller testable pieces, and cost-aware model routing.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "ai-first-engineering": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when setting up AI-first development workflows for teams. Defines the operating model where AI agents generate implementation output, with review and quality processes.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "api-design": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when designing REST API endpoints, choosing HTTP methods and status codes, implementing pagination, filtering, error responses, versioning, or rate limiting.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "backend-patterns": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when building backend APIs, designing database access layers, implementing caching or authentication, or optimizing server-side Node.js, Express, or Next.js API routes.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "coding-standards": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when writing or reviewing TypeScript, JavaScript, React, or Node.js code. Enforces naming conventions, immutability patterns, error handling, async patterns, and function size limits.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "content-hash-cache-pattern": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when caching file processing results to avoid reprocessing unchanged files. Implements SHA-256 content hash caching \u2014 path-independent, auto-invalidating, with service layer separation.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "continuous-agent-loop": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when running autonomous agent loops, setting up continuous agent pipelines, or implementing quality gates with evals and recovery controls for long-running tasks.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "continuous-learning": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when extracting reusable patterns from sessions, learning from completed work, or managing instincts. Creates atomic instincts with confidence scoring that evolve into skills, commands, and agents.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "cost-aware-llm-pipeline": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when optimizing LLM API costs, routing tasks to cheaper models, setting up budget tracking, implementing retry logic, or enabling prompt caching for AI pipelines.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "database-migrations": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when creating database migrations, altering schemas, performing data migrations, implementing zero-downtime deployments, or managing rollbacks across PostgreSQL, MySQL, and ORMs (Prisma, Drizzle, Django, TypeORM).",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "deployment-patterns": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when setting up CI/CD pipelines, configuring health checks, implementing rolling or blue-green deployments, creating production readiness checklists, or deploying to Kubernetes.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "docker-patterns": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when writing Dockerfiles, configuring Docker Compose, setting up container networking, managing volumes, or implementing multi-stage builds for secure containers.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "e2e-testing": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when writing Playwright end-to-end tests, setting up Page Object Model, configuring E2E test pipelines, managing test artifacts (screenshots, videos, traces), or fixing flaky tests.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "eval-harness": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when creating evaluation frameworks for agent workflows, defining eval test cases, measuring agent quality and performance, or implementing eval-driven development (EDD).",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "frontend-patterns": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when building React components, managing frontend state, optimizing UI performance, implementing lazy loading, error boundaries, or accessible interfaces in React/Next.js apps.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "iterative-retrieval": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when searching for code across a large codebase and initial search is too broad. Progressively refines context retrieval queries to find relevant files, solving the subagent context problem.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "plankton-code-quality": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when setting up auto-formatting and linting on every file edit. Enforces write-time code quality with Plankton -- formatting, linting, and agent-powered fixes via hooks.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "postgres-patterns": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when writing PostgreSQL queries, designing database schemas, creating indexes, implementing Row Level Security, or optimizing query performance with Supabase patterns.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "python-patterns": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when writing Python code. Enforces PEP 8 style, type hints, Pythonic idioms (EAFP, comprehensions, dataclasses), proper exception handling, and async patterns.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "python-testing": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when writing Python tests with pytest, setting up test fixtures, mocking dependencies, parametrizing test cases, or measuring code coverage. Enforces TDD methodology for Python.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "regex-vs-llm-structured-text": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when deciding between regex and LLM for parsing or extracting data from structured text. Decision framework: start with regex, add LLM only for low-confidence edge cases.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "search-first": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when starting a new implementation task. Research existing tools, libraries, and patterns before writing custom code. Search for solutions first, then implement.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "security-review": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "strategic-compact": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when context window is getting large, conversation needs compacting, or you want to preserve important context through task phases. Suggests strategic compaction at logical intervals.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "ui-ux-pro-max": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when generating design systems, choosing UI styles, selecting color palettes and font pairings, or getting stack-specific UI guidelines. Contains 67 styles, 96 palettes, 57 fonts across 13 tech stacks with BM25 search.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    },
+    "verification-loop": {
+      "status": "completed",
+      "best_score": null,
+      "best_description": "Use when verifying code changes before committing or pushing. Runs build, tests, lint, and type checks in a comprehensive verification loop to catch errors early.",
+      "attempts": 1,
+      "skip_reason": null,
+      "seed_score": 0.5
+    }
+  },
+  "bugs_fixed": [
+    "timeout-scoring: timeouts now fall through to scoring logic instead of returning 0.0 blindly",
+    "timeout-increased: 120s -> 180s to account for gemini CLI startup latency",
+    "stdout-buffering: added PYTHONUNBUFFERED=1 to run-gepa.sh"
+  ],
+  "config": {
+    "max_calls_per_skill": 30,
+    "timeout_seconds": 180,
+    "model": "gemini/gemini-3-flash-preview"
+  },
+  "completed_at": "2026-03-10T04:48:07"
+}

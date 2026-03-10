@@ -1,0 +1,7 @@
+{
+  "skill_name": "database-migrations",
+  "seed_description": "Use when creating database migrations, altering schemas, performing data migrations, implementing zero-downtime deployments, or managing rollbacks across PostgreSQL, MySQL, and ORMs (Prisma, Drizzle, Django, TypeORM).",
+  "best_description": "Use when creating database migrations, altering schemas, performing data migrations, implementing zero-downtime deployments, or managing rollbacks across PostgreSQL, MySQL, and ORMs (Prisma, Drizzle, Django, TypeORM).",
+  "best_score": null,
+  "timestamp": "2026-03-10T03:34:36"
+}

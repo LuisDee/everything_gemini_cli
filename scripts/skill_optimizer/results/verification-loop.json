@@ -1,0 +1,7 @@
+{
+  "skill_name": "verification-loop",
+  "seed_description": "Use when verifying code changes before committing or pushing. Runs build, tests, lint, and type checks in a comprehensive verification loop to catch errors early.",
+  "best_description": "Use when verifying code changes before committing or pushing. Runs build, tests, lint, and type checks in a comprehensive verification loop to catch errors early.",
+  "best_score": null,
+  "timestamp": "2026-03-10T04:46:33"
+}

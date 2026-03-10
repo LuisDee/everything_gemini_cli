@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Write pytest tests with fixtures and mocking for the user service",
+      "expected_skill": "python-testing",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up parametrized test cases for the data validation functions",
+      "expected_skill": "python-testing",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need to mock the database and external API calls in my Python tests",
+      "expected_skill": "python-testing",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Measure code coverage for the Python backend and find untested paths",
+      "expected_skill": "python-testing",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The Python tests pass locally but fail in CI, I think there are hidden dependencies",
+      "expected_skill": "python-testing",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "I wrote the code but I am not confident it works, I need proper Python testing around it",
+      "expected_skill": "python-testing",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Design the database schema for a blog platform",
+      "expected_skill": "python-testing",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write a Dockerfile for the Node.js application",
+      "expected_skill": "python-testing",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Create test fixtures that set up and tear down database state for each test",
+      "expected_skill": "python-testing",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Every time we refactor the Python backend, something breaks silently",
+      "expected_skill": "python-testing",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Build a React dashboard with charts and filters",
+      "expected_skill": "python-testing",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Deploy to AWS with auto-scaling",
+      "expected_skill": "python-testing",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "python-testing"
+}

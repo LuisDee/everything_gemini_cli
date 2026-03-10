@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Set up an AI-first development workflow for my engineering team",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Define the operating model where AI agents generate most of the implementation",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "How should our team review and quality-check code that AI agents write",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I want my developers to supervise AI output rather than write everything manually",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "We are adopting AI coding assistants, how should we restructure our development process",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The team is using AI tools randomly, I need a coherent strategy for AI-augmented development",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write Playwright E2E tests for the dashboard",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Optimize PostgreSQL queries for the reporting module",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Create review processes for AI-generated code in our team workflow",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Our development velocity is stagnating, can we use AI agents to handle the routine coding",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Deploy the application with zero downtime",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Design the database schema for an e-commerce platform",
+      "expected_skill": "ai-first-engineering",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "ai-first-engineering"
+}

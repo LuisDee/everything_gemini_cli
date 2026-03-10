@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Route simple coding tasks to a cheaper LLM model and complex ones to the expensive model",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up budget tracking for the AI pipeline to control API costs",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Enable prompt caching so repeated similar requests do not cost extra",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Implement retry logic with exponential backoff for the LLM API calls",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Our AI features are costing too much, I need to reduce the API bill without losing quality",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The LLM calls are eating the budget, I need smarter routing and caching",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write Playwright tests for the checkout flow",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Design a PostgreSQL schema for the inventory system",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Optimize model routing based on task complexity to minimize API spend",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "We are spending thousands on API calls and half of them are probably unnecessary",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Set up Docker networking for the microservices",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Build a responsive React navigation component",
+      "expected_skill": "cost-aware-llm-pipeline",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "cost-aware-llm-pipeline"
+}

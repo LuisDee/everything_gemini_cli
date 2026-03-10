@@ -1,0 +1,7 @@
+{
+  "skill_name": "content-hash-cache-pattern",
+  "seed_description": "Use when caching file processing results to avoid reprocessing unchanged files. Implements SHA-256 content hash caching \u2014 path-independent, auto-invalidating, with service layer separation.",
+  "best_description": "Use when caching file processing results to avoid reprocessing unchanged files. Implements SHA-256 content hash caching \u2014 path-independent, auto-invalidating, with service layer separation.",
+  "best_score": null,
+  "timestamp": "2026-03-10T03:17:27"
+}

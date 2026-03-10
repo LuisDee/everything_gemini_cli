@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Write a Playwright test for the user login flow",
+      "expected_skill": "e2e-testing",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up Page Object Model for our Playwright test suite",
+      "expected_skill": "e2e-testing",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Our CI tests keep failing randomly, the login test is flaky",
+      "expected_skill": "e2e-testing",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I need to capture screenshots and video when browser tests fail",
+      "expected_skill": "e2e-testing",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I want to make sure the entire checkout process works from start to finish in a real browser",
+      "expected_skill": "e2e-testing",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Users report the signup flow breaks on mobile, I need to automate testing across viewports",
+      "expected_skill": "e2e-testing",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write pytest unit tests for the payment processor class",
+      "expected_skill": "e2e-testing",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Optimize the database index for the search query",
+      "expected_skill": "e2e-testing",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Configure the test pipeline to run browser tests in parallel on CI",
+      "expected_skill": "e2e-testing",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Customers say the app is broken but our unit tests all pass, something is wrong at a higher level",
+      "expected_skill": "e2e-testing",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Build a caching layer using Redis for the API",
+      "expected_skill": "e2e-testing",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Create a Docker Compose setup for development",
+      "expected_skill": "e2e-testing",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "e2e-testing"
+}

@@ -1,0 +1,7 @@
+{
+  "skill_name": "docker-patterns",
+  "seed_description": "Use when writing Dockerfiles, configuring Docker Compose, setting up container networking, managing volumes, or implementing multi-stage builds for secure containers.",
+  "best_description": "Use when writing Dockerfiles, configuring Docker Compose, setting up container networking, managing volumes, or implementing multi-stage builds for secure containers.",
+  "best_score": null,
+  "timestamp": "2026-03-10T03:43:31"
+}

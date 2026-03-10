@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Optimize this PostgreSQL query that does a full table scan on the orders table",
+      "expected_skill": "postgres-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Design the database schema for a multi-tenant SaaS application with row level security",
+      "expected_skill": "postgres-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Which indexes should I create to speed up the search queries on the products table",
+      "expected_skill": "postgres-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I need to enforce data access policies so users can only see their own records",
+      "expected_skill": "postgres-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The analytics dashboard takes 30 seconds to load, the queries are killing the database",
+      "expected_skill": "postgres-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Our database queries work fine individually but the app slows down under load",
+      "expected_skill": "postgres-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write a Playwright test for the login page",
+      "expected_skill": "postgres-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Build a React component for the product listing page",
+      "expected_skill": "postgres-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Set up connection pooling and query caching for the Supabase backend",
+      "expected_skill": "postgres-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Data keeps getting corrupted when two users update the same record simultaneously",
+      "expected_skill": "postgres-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Deploy the application using Kubernetes with rolling updates",
+      "expected_skill": "postgres-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Implement JWT authentication for the Express API",
+      "expected_skill": "postgres-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "postgres-patterns"
+}

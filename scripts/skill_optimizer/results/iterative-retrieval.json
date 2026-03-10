@@ -1,0 +1,7 @@
+{
+  "skill_name": "iterative-retrieval",
+  "seed_description": "Use when searching for code across a large codebase and initial search is too broad. Progressively refines context retrieval queries to find relevant files, solving the subagent context problem.",
+  "best_description": "Use when searching for code across a large codebase and initial search is too broad. Progressively refines context retrieval queries to find relevant files, solving the subagent context problem.",
+  "best_score": null,
+  "timestamp": "2026-03-10T04:00:51"
+}

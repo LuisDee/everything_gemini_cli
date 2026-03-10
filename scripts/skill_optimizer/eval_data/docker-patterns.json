@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Write a Dockerfile for a Node.js app with multi-stage build",
+      "expected_skill": "docker-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up Docker Compose for local development with hot reload",
+      "expected_skill": "docker-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need my containers to share a network so the API can talk to the database",
+      "expected_skill": "docker-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The Docker image is 2GB, I need to make it smaller without breaking anything",
+      "expected_skill": "docker-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I want the app to work exactly the same on every developer machine",
+      "expected_skill": "docker-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Our build takes forever and the final image has dev dependencies in it",
+      "expected_skill": "docker-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write Python tests for the data processing pipeline",
+      "expected_skill": "docker-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Design the REST API endpoints for the user service",
+      "expected_skill": "docker-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Configure volume mounts so database data persists between container restarts",
+      "expected_skill": "docker-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Make sure nobody can exploit our containers in production, lock them down",
+      "expected_skill": "docker-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Add pagination to the products API endpoint",
+      "expected_skill": "docker-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Review this React component for accessibility issues",
+      "expected_skill": "docker-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "docker-patterns"
+}

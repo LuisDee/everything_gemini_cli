@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Build a React component with lazy loading and error boundaries",
+      "expected_skill": "frontend-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Implement state management for the shopping cart in a Next.js app",
+      "expected_skill": "frontend-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "The page re-renders too often when the user types in the search box, it feels sluggish",
+      "expected_skill": "frontend-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I need to share user data between deeply nested components without prop drilling",
+      "expected_skill": "frontend-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The app feels slow on mobile, interactions are janky and scrolling stutters",
+      "expected_skill": "frontend-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Make this interface accessible to screen reader users and keyboard navigation",
+      "expected_skill": "frontend-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write a database migration to add foreign key constraints",
+      "expected_skill": "frontend-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up the CI/CD pipeline for production deployments",
+      "expected_skill": "frontend-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Optimize the React render cycle for a data-heavy dashboard with many charts",
+      "expected_skill": "frontend-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Users complain the interface is hard to use, forms lose focus and buttons are unresponsive",
+      "expected_skill": "frontend-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Configure container networking in Docker Compose",
+      "expected_skill": "frontend-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Create a REST API for the payments service",
+      "expected_skill": "frontend-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "frontend-patterns"
+}

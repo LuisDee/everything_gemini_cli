@@ -1,0 +1,7 @@
+{
+  "skill_name": "cost-aware-llm-pipeline",
+  "seed_description": "Use when optimizing LLM API costs, routing tasks to cheaper models, setting up budget tracking, implementing retry logic, or enabling prompt caching for AI pipelines.",
+  "best_description": "Use when optimizing LLM API costs, routing tasks to cheaper models, setting up budget tracking, implementing retry logic, or enabling prompt caching for AI pipelines.",
+  "best_score": null,
+  "timestamp": "2026-03-10T03:30:25"
+}

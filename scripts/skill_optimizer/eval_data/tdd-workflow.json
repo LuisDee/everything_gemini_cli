@@ -1,0 +1,103 @@
+{
+  "skill_name": "tdd-workflow",
+  "train": [
+    {
+      "prompt": "Implement a user registration form using test-driven development",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Build a REST API endpoint following the red-green-refactor cycle",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I want to write the tests before writing any implementation code for the payment module",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Make sure every function has a failing test before I write it, I want high confidence in the shipping flow",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I need to build the order validation logic and I want it to be absolutely bulletproof before deployment",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Add a discount calculator to the checkout, I want to be really confident it handles every edge case correctly",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write a function that parses CSV files and handles malformed rows gracefully",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "I keep finding regressions every time we change the billing code, help me stop that",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Deploy the application to AWS with rolling updates and health checks",
+      "expected_skill": "tdd-workflow",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Design the database schema for a blog platform with categories and tags",
+      "expected_skill": "tdd-workflow",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Review this pull request for security vulnerabilities and code quality issues",
+      "expected_skill": "tdd-workflow",
+      "should_activate": false,
+      "difficulty": "medium"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Refactor the authentication service, I need tests driving each change to avoid regressions",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Build a file upload handler that I can ship with total confidence, every path needs verification",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The invoice calculation is wrong sometimes, I need to nail down exactly what it should do before fixing it",
+      "expected_skill": "tdd-workflow",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Optimize the PostgreSQL query for the analytics dashboard, it is too slow",
+      "expected_skill": "tdd-workflow",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up nginx as a reverse proxy with SSL termination",
+      "expected_skill": "tdd-workflow",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "The context window is getting large, compact the conversation at a logical point",
+      "expected_skill": "strategic-compact",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Preserve important context through task phases and suggest compaction",
+      "expected_skill": "strategic-compact",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "We have been working for a while, find a good breakpoint to compact without losing state",
+      "expected_skill": "strategic-compact",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The conversation is getting long and the agent is starting to forget earlier context",
+      "expected_skill": "strategic-compact",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I feel like the agent is losing track of what we decided earlier in this session",
+      "expected_skill": "strategic-compact",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The session quality is degrading, responses are less coherent than they were an hour ago",
+      "expected_skill": "strategic-compact",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write unit tests for the payment processing module",
+      "expected_skill": "strategic-compact",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Deploy the application to production with health checks",
+      "expected_skill": "strategic-compact",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Compact now and preserve the key decisions and TODOs from this phase",
+      "expected_skill": "strategic-compact",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The agent seems confused about what we are building, maybe it has lost context",
+      "expected_skill": "strategic-compact",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create a database migration for the new feature",
+      "expected_skill": "strategic-compact",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Build a Docker image for the API server",
+      "expected_skill": "strategic-compact",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "strategic-compact"
+}

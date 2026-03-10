@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Before writing custom code, search for existing libraries that solve this",
+      "expected_skill": "search-first",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Research existing tools and patterns before implementing the feature from scratch",
+      "expected_skill": "search-first",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Is there an existing npm package that already does CSV parsing with error handling",
+      "expected_skill": "search-first",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Before I reinvent the wheel, check if someone has already solved this problem",
+      "expected_skill": "search-first",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I do not want to write a custom solution if a well-maintained library already exists",
+      "expected_skill": "search-first",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "There is probably a standard way to solve this, find it before coding anything",
+      "expected_skill": "search-first",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Build a Playwright test for the user signup flow",
+      "expected_skill": "search-first",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Create database indexes for the search feature",
+      "expected_skill": "search-first",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Find existing solutions for rate limiting before building a custom implementation",
+      "expected_skill": "search-first",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I bet this is a solved problem, check before we spend days coding it",
+      "expected_skill": "search-first",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Set up Docker Compose for the development stack",
+      "expected_skill": "search-first",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Review this TypeScript code for style issues",
+      "expected_skill": "search-first",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "search-first"
+}

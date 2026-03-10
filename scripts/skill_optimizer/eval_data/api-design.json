@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Design a REST API for user management with proper status codes and pagination",
+      "expected_skill": "api-design",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "What HTTP methods should I use for CRUD endpoints on the orders resource",
+      "expected_skill": "api-design",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need to add filtering and sorting to my products endpoint, what is the convention",
+      "expected_skill": "api-design",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "How should I version my API so existing clients do not break when I add new fields",
+      "expected_skill": "api-design",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Clients keep getting confused by our error responses, they need more structure",
+      "expected_skill": "api-design",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "We need to expose our internal services to mobile apps securely and consistently",
+      "expected_skill": "api-design",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write unit tests for the user login function using pytest",
+      "expected_skill": "api-design",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up a Docker Compose file for the development environment",
+      "expected_skill": "api-design",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Add rate limiting and proper error codes to the authentication endpoints",
+      "expected_skill": "api-design",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Our API returns inconsistent data shapes, partners are complaining about integration issues",
+      "expected_skill": "api-design",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Optimize the slow PostgreSQL join query on the reports table",
+      "expected_skill": "api-design",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Deploy the app with blue-green deployment to avoid downtime",
+      "expected_skill": "api-design",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "api-design"
+}

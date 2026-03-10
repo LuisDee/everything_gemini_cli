@@ -1,0 +1,7 @@
+{
+  "skill_name": "deployment-patterns",
+  "seed_description": "Use when setting up CI/CD pipelines, configuring health checks, implementing rolling or blue-green deployments, creating production readiness checklists, or deploying to Kubernetes.",
+  "best_description": "Use when setting up CI/CD pipelines, configuring health checks, implementing rolling or blue-green deployments, creating production readiness checklists, or deploying to Kubernetes.",
+  "best_score": null,
+  "timestamp": "2026-03-10T03:38:55"
+}

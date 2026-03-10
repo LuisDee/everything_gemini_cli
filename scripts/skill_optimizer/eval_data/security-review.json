@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Review this authentication implementation for security vulnerabilities",
+      "expected_skill": "security-review",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Check the API endpoints for SQL injection and XSS vulnerabilities",
+      "expected_skill": "security-review",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I am storing API keys in the codebase and need a better approach for secrets management",
+      "expected_skill": "security-review",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Make sure the payment processing endpoint cannot be exploited",
+      "expected_skill": "security-review",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I am worried that our user data is not safe, we handle credit cards and personal info",
+      "expected_skill": "security-review",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Someone could probably abuse our file upload endpoint, it accepts anything",
+      "expected_skill": "security-review",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Add pagination to the products API",
+      "expected_skill": "security-review",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up Docker Compose for local development",
+      "expected_skill": "security-review",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Implement CSRF protection and proper input validation on all forms",
+      "expected_skill": "security-review",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Users can somehow see other users data, I think our authorization is broken",
+      "expected_skill": "security-review",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Build a React component with lazy loading",
+      "expected_skill": "security-review",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write unit tests for the calculator module",
+      "expected_skill": "security-review",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "security-review"
+}

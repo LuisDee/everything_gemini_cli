@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Generate a complete design system for a SaaS dashboard with color palette and typography",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "What UI style should I use for a fintech app, show me glassmorphism options",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need font pairings that work well for a healthcare application",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Give me React-specific UI guidelines for building a responsive dashboard",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The app looks unprofessional and inconsistent, I need a cohesive visual language",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "I want the interface to feel premium and modern, like a well-designed consumer product",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write database queries for the analytics dashboard",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up Kubernetes deployment manifests",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Select a color palette that conveys trust and security for a banking app",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Everything looks bland and generic, I want a distinctive visual identity for the product",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write pytest tests for the user authentication module",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Create a Docker multi-stage build for the frontend",
+      "expected_skill": "ui-ux-pro-max",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "ui-ux-pro-max"
+}

@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Review this TypeScript code for naming conventions and style issues",
+      "expected_skill": "coding-standards",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Enforce consistent error handling patterns across our React codebase",
+      "expected_skill": "coding-standards",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "This function is 200 lines long, help me break it into smaller pieces following best practices",
+      "expected_skill": "coding-standards",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "We need consistent async/await patterns instead of mixing callbacks and promises",
+      "expected_skill": "coding-standards",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Our codebase is getting harder to read, new developers are confused by inconsistent patterns",
+      "expected_skill": "coding-standards",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Clean up this JavaScript file so it follows modern conventions",
+      "expected_skill": "coding-standards",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Deploy the application to Kubernetes with health checks",
+      "expected_skill": "coding-standards",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Create a database migration to add a status column to the orders table",
+      "expected_skill": "coding-standards",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Make this Node.js module follow immutability patterns and proper naming",
+      "expected_skill": "coding-standards",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The team keeps writing inconsistent code, I want guardrails without slowing them down",
+      "expected_skill": "coding-standards",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write a Python script to parse CSV files",
+      "expected_skill": "coding-standards",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up a CI/CD pipeline for the React app",
+      "expected_skill": "coding-standards",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "coding-standards"
+}

@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Build a caching layer for the Express API using Redis",
+      "expected_skill": "backend-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Implement JWT authentication middleware for the Node.js backend",
+      "expected_skill": "backend-patterns",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "The API route handler is getting too big, I need a better way to organize the business logic",
+      "expected_skill": "backend-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "How do I structure my Next.js API routes so they share database connections efficiently",
+      "expected_skill": "backend-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Our server response times are getting worse as we add more features",
+      "expected_skill": "backend-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "I need the server to handle thousands of concurrent requests without falling over",
+      "expected_skill": "backend-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create a Playwright test for the checkout flow in the browser",
+      "expected_skill": "backend-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Choose a color palette and font pairing for a fintech dashboard",
+      "expected_skill": "backend-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Set up connection pooling and query optimization for the database access layer",
+      "expected_skill": "backend-patterns",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Every feature we add makes the codebase messier, requests are touching too many files",
+      "expected_skill": "backend-patterns",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write a Dockerfile for the Python microservice",
+      "expected_skill": "backend-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Design a REST API with pagination and filtering",
+      "expected_skill": "backend-patterns",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "backend-patterns"
+}

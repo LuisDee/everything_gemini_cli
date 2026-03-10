@@ -39,3 +39,35 @@ node_modules/
 # Python
 __pycache__/
 *.pyc
+
+# GEPA optimizer runtime artifacts
+scripts/gepa-output.log
+scripts/gepa-batch-output.log
+scripts/gepa.pid
+scripts/gepa-batch.pid
+scripts/skill_optimizer/gepa-status.json
+scripts/skill_optimizer/gepa-status.tmp
+
+# Gemini CLI eval artifacts (code generated during skill eval runs)
+email_validator/
+palindrome_checker/
+payment_module/
+roman_numeral_tdd/
+string_calculator/
+sum_even_numbers_tdd/
+tdd_python_exercise/
+api/
+nginx/
+docker-compose.yml
+scripts/Dockerfile
+scripts/cloudformation.yml
+scripts/deploy.sh
+scripts/lib/email-validator.js
+scripts/lib/email-validator.test.js
+scripts/lib/upload/
+
+# Gemini/Serena nested config artifacts
+.gemini/
+.serena/
+scripts/.gemini/
+scripts/.serena/

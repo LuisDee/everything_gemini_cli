@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Create a database migration to add a status column to the orders table",
+      "expected_skill": "database-migrations",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write a Prisma migration to rename the user email field",
+      "expected_skill": "database-migrations",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need to migrate data from the old schema to the new one without losing anything",
+      "expected_skill": "database-migrations",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "How do I alter a table in production without causing downtime for users",
+      "expected_skill": "database-migrations",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "We changed the data model and now I need to move everything safely",
+      "expected_skill": "database-migrations",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The last schema change broke production and we could not go back",
+      "expected_skill": "database-migrations",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Build a React form with validation",
+      "expected_skill": "database-migrations",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up a CI/CD pipeline with GitHub Actions",
+      "expected_skill": "database-migrations",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Create a rollback plan for the upcoming schema migration to add foreign keys",
+      "expected_skill": "database-migrations",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "We need to split one table into two and migrate all the existing data",
+      "expected_skill": "database-migrations",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write Playwright tests for the user profile page",
+      "expected_skill": "database-migrations",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Optimize the Redis cache configuration",
+      "expected_skill": "database-migrations",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "database-migrations"
+}

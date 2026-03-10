@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Set up a continuous autonomous agent loop with quality gates and recovery",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Implement an agent pipeline that runs continuously with evals between steps",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need the agent to keep working on tasks in a loop and only stop when quality gates pass",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "How do I set up recovery controls so the agent loop does not get stuck",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I want the agent to work through a queue of tasks overnight without human intervention",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The agent needs to run for hours autonomously but stop gracefully if anything goes wrong",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write unit tests for the shopping cart service",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Design a database schema for user permissions",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Add eval checkpoints between each stage of the agent pipeline",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I want to leave the agent running on a batch of PRs and come back to reviewed results",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create a Docker Compose setup for development",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Implement pagination for the API endpoints",
+      "expected_skill": "continuous-agent-loop",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "continuous-agent-loop"
+}

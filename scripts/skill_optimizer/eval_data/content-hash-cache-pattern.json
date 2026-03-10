@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Cache file processing results using content hashes to avoid reprocessing",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Implement SHA-256 based cache invalidation for the document processor",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "The build reprocesses every file even when nothing changed, I need smart caching",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Skip reprocessing files that have not been modified since the last run",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "The pipeline re-generates thumbnails for every image even though most have not changed",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Processing takes hours because it redoes everything, I need it to only handle what changed",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write a React component for the navigation bar",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Set up GitHub Actions for the CI pipeline",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Implement path-independent caching so renamed files still hit the cache",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Our ETL job runs for hours but most of the input data is unchanged between runs",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create Playwright tests for the search feature",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Optimize the REST API response times",
+      "expected_skill": "content-hash-cache-pattern",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "content-hash-cache-pattern"
+}

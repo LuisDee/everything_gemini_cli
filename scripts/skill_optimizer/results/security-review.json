@@ -1,0 +1,7 @@
+{
+  "skill_name": "security-review",
+  "seed_description": "Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.",
+  "best_description": "Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.",
+  "best_score": null,
+  "timestamp": "2026-03-10T04:32:41"
+}

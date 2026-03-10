@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Create an evaluation framework to measure agent quality on coding tasks",
+      "expected_skill": "eval-harness",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Define eval test cases to benchmark the agent workflow performance",
+      "expected_skill": "eval-harness",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I need to measure whether the agent is getting better or worse over time",
+      "expected_skill": "eval-harness",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Set up eval-driven development so changes are validated against a test suite automatically",
+      "expected_skill": "eval-harness",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "How do I know if my agent changes actually improve quality or just feel different",
+      "expected_skill": "eval-harness",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "I keep tweaking the agent prompts but I have no way to tell if it got better",
+      "expected_skill": "eval-harness",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Implement JWT authentication for the API",
+      "expected_skill": "eval-harness",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write a Docker Compose file for the development stack",
+      "expected_skill": "eval-harness",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Benchmark agent performance across a suite of coding challenges with metrics",
+      "expected_skill": "eval-harness",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I need scientific rigor in how I evaluate prompt engineering changes",
+      "expected_skill": "eval-harness",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Create a REST API for managing blog posts",
+      "expected_skill": "eval-harness",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Build a responsive dashboard with React",
+      "expected_skill": "eval-harness",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "eval-harness"
+}

@@ -1,0 +1,7 @@
+{
+  "skill_name": "e2e-testing",
+  "seed_description": "Use when writing Playwright end-to-end tests, setting up Page Object Model, configuring E2E test pipelines, managing test artifacts (screenshots, videos, traces), or fixing flaky tests.",
+  "best_description": "Use when writing Playwright end-to-end tests, setting up Page Object Model, configuring E2E test pipelines, managing test artifacts (screenshots, videos, traces), or fixing flaky tests.",
+  "best_score": null,
+  "timestamp": "2026-03-10T03:47:55"
+}

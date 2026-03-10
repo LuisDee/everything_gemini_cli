@@ -1,0 +1,7 @@
+{
+  "skill_name": "python-patterns",
+  "seed_description": "Use when writing Python code. Enforces PEP 8 style, type hints, Pythonic idioms (EAFP, comprehensions, dataclasses), proper exception handling, and async patterns.",
+  "best_description": "Use when writing Python code. Enforces PEP 8 style, type hints, Pythonic idioms (EAFP, comprehensions, dataclasses), proper exception handling, and async patterns.",
+  "best_score": null,
+  "timestamp": "2026-03-10T04:14:11"
+}

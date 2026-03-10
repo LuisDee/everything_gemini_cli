@@ -1,0 +1,79 @@
+{
+  "train": [
+    {
+      "prompt": "Set up auto-formatting and linting on every file edit",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Enforce write-time code quality checks using Plankton hooks",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "I want the agent to automatically format code every time it writes a file",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Set up agent-powered lint fixes that run automatically on save",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Every file the agent writes has different formatting, I want consistency enforced automatically",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The code quality drops when the agent writes fast, I need guardrails on every edit",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Design a REST API for the notification service",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Create a database migration to add indexes",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Configure hooks to run prettier and eslint after every agent edit",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "I do not want to manually fix formatting after the agent, automate it",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Write Playwright tests for the login flow",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Optimize the PostgreSQL query performance",
+      "expected_skill": "plankton-code-quality",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ],
+  "skill_name": "plankton-code-quality"
+}
