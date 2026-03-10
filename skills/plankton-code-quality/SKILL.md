@@ -1,6 +1,6 @@
 ---
 name: plankton-code-quality
-description: "Write-time code quality enforcement using Plankton -- auto-formatting, linting, and agent-powered fixes on every file edit via hooks."
+description: "Use when setting up auto-formatting and linting on every file edit. Enforces write-time code quality with Plankton -- formatting, linting, and agent-powered fixes via hooks."
 origin: community
 ---
 

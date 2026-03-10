@@ -1,6 +1,6 @@
 ---
 name: iterative-retrieval
-description: Pattern for progressively refining context retrieval to solve the subagent context problem
+description: "Use when searching for code across a large codebase and initial search is too broad. Progressively refines context retrieval queries to find relevant files, solving the subagent context problem."
 origin: ECC
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: python-testing
-description: Python testing strategies using pytest, TDD methodology, fixtures, mocking, parametrization, and coverage requirements.
+description: "Use when writing Python tests with pytest, setting up test fixtures, mocking dependencies, parametrizing test cases, or measuring code coverage. Enforces TDD methodology for Python."
 origin: ECC
 ---
 

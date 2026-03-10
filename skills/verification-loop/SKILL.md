@@ -1,6 +1,6 @@
 ---
 name: verification-loop
-description: "A comprehensive verification system for agent sessions."
+description: "Use when verifying code changes before committing or pushing. Runs build, tests, lint, and type checks in a comprehensive verification loop to catch errors early."
 origin: ECC
 ---
 

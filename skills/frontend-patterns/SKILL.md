@@ -1,6 +1,6 @@
 ---
 name: frontend-patterns
-description: Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices.
+description: "Use when building React components, managing frontend state, optimizing UI performance, implementing lazy loading, error boundaries, or accessible interfaces in React/Next.js apps."
 origin: ECC
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: continuous-learning
-description: Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds project-scoped instincts to prevent cross-project contamination.
+description: "Use when extracting reusable patterns from sessions, learning from completed work, or managing instincts. Creates atomic instincts with confidence scoring that evolve into skills, commands, and agents."
 origin: ECC
 version: 2.1.0
 ---

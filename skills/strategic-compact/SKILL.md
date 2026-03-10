@@ -1,6 +1,6 @@
 ---
 name: strategic-compact
-description: Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction.
+description: "Use when context window is getting large, conversation needs compacting, or you want to preserve important context through task phases. Suggests strategic compaction at logical intervals."
 origin: ECC
 ---
 

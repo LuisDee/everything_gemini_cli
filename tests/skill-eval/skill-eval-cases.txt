@@ -1,0 +1,89 @@
+# Skill Eval Test Cases
+# Format: skill_name | test_prompt | expected_keywords_in_description
+# 3 test prompts per skill that SHOULD trigger activation
+
+# === ON-DEMAND SKILLS (should trigger on specific prompts) ===
+
+tdd-workflow | Write tests for this function before implementing it | test,TDD,write,feature
+tdd-workflow | I want to do test-driven development for this feature | test,TDD,write,feature
+tdd-workflow | Add unit tests with 80% coverage | test,coverage,unit
+
+security-review | Review this code for security vulnerabilities | security,vulnerabilit,review
+security-review | Check if this API endpoint is safe from injection | security,API,injection
+security-review | Audit the authentication implementation | security,authentication,audit
+
+strategic-compact | My context is getting too long, should I compact? | compact,context,long
+strategic-compact | When should I save context and compact the conversation? | compact,context,save
+strategic-compact | The conversation is getting large, help me manage context | compact,context,manage
+
+iterative-retrieval | I need to find relevant code but my search is too broad | retriev,search,refin,context
+iterative-retrieval | Help me progressively narrow down the relevant files | retriev,progressiv,refin
+iterative-retrieval | My subagent doesn't have enough context, how do I fix that? | context,subagent,retriev
+
+python-testing | Write pytest tests for this Python module | pytest,test,Python
+python-testing | Set up test fixtures and mocking for this Python code | pytest,fixture,mock,Python
+python-testing | How do I parametrize my Python tests? | pytest,parametri,Python,test
+
+cost-aware-llm-pipeline | How do I reduce my LLM API costs? | cost,LLM,API,model
+cost-aware-llm-pipeline | Route this task to a cheaper model | cost,model,rout,cheap
+cost-aware-llm-pipeline | Set up budget tracking for API usage | cost,budget,API,track
+
+e2e-testing | Write Playwright end-to-end tests for this feature | Playwright,E2E,test,end-to-end
+e2e-testing | Set up E2E testing with Page Object Model | Playwright,E2E,Page Object
+e2e-testing | Fix this flaky E2E test | Playwright,E2E,test,flaky
+
+eval-harness | Set up an eval framework to measure agent quality | eval,framework,agent,quality
+eval-harness | Create evaluation cases for this agent workflow | eval,case,agent,workflow
+eval-harness | Measure agent performance with evals | eval,agent,performance,measur
+
+content-hash-cache-pattern | Cache file processing results based on content hash | cache,hash,content,file
+content-hash-cache-pattern | Implement SHA-256 content-based caching | cache,hash,SHA,content
+content-hash-cache-pattern | Avoid reprocessing files that haven't changed | cache,hash,file,reprocess
+
+verification-loop | Verify my changes are correct before committing | verif,check,correct,change
+verification-loop | Run a full verification loop on my code | verif,loop,check,code
+verification-loop | Check build, tests, and lint before I push | verif,build,test,lint
+
+search-first | Search for existing libraries before writing custom code | search,research,librar,existing
+search-first | Is there already a tool that does this? | search,existing,tool,research
+search-first | Research best practices before implementing | search,research,before,implement
+
+agentic-engineering | Break this large task into smaller eval-driven pieces | eval,decompos,task,agent
+agentic-engineering | Operate as an agentic engineer on this project | agent,eval,engineer,operat
+agentic-engineering | Use eval-first execution for this feature | eval,execut,agent,first
+
+plankton-code-quality | Set up auto-formatting on every file edit | format,lint,quality,edit
+plankton-code-quality | Enforce code quality checks with Plankton | Plankton,quality,format,lint
+plankton-code-quality | Run linting and auto-fix on save | lint,format,fix,quality
+
+ai-first-engineering | How should my team work with AI agents? | AI,agent,team,engineer
+ai-first-engineering | Set up an AI-first development workflow | AI,agent,engineer,workflow
+ai-first-engineering | What's the operating model for AI-driven development? | AI,agent,model,engineer
+
+continuous-agent-loop | Run an autonomous agent loop on this task | loop,autonomous,agent,continuous
+continuous-agent-loop | Set up a continuous agent pipeline with quality gates | loop,agent,continuous,quality
+continuous-agent-loop | Keep the agent running until all tasks are done | loop,agent,continuous,task
+
+continuous-learning | Learn from this session and save patterns | learn,pattern,session,save
+continuous-learning | Extract reusable instincts from my work | learn,instinct,extract,pattern
+continuous-learning | What did we learn from this session? | learn,session,pattern,extract
+
+regex-vs-llm-structured-text | Should I use regex or LLM to parse this text? | regex,LLM,parse,text
+regex-vs-llm-structured-text | Parse this structured text - regex or AI? | regex,LLM,parse,structured
+regex-vs-llm-structured-text | Extract data from this format - which approach? | regex,LLM,extract,parse
+
+ui-ux-pro-max | Generate a complete design system for my app | design,style,color,UI
+ui-ux-pro-max | What UI style should I use for a SaaS dashboard? | design,style,UI,dashboard
+ui-ux-pro-max | Show me color palettes and font pairings for fintech | design,color,font,palette
+
+# === AMBIENT SKILLS (best practices - should be in GEMINI.md, not triggered) ===
+
+coding-standards | Write a TypeScript function following best practices | TypeScript,standard,best practice
+backend-patterns | Design the API route structure for this Express app | backend,API,Express,Node
+frontend-patterns | Build a React component with proper state management | React,component,state,frontend
+python-patterns | Make this Python code more Pythonic | Python,PEP,idiomatic,Pythonic
+api-design | Design REST API endpoints for user management | REST,API,endpoint,design
+postgres-patterns | Optimize this PostgreSQL query | PostgreSQL,query,optimi,index
+docker-patterns | Write a Dockerfile for this Node.js app | Docker,container,Dockerfile
+deployment-patterns | Set up CI/CD for this project | CI/CD,deploy,pipeline
+database-migrations | Create a database migration for this schema change | migration,schema,rollback

@@ -1,6 +1,6 @@
 ---
 name: eval-harness
-description: Formal evaluation framework for agent sessions implementing eval-driven development (EDD) principles
+description: "Use when creating evaluation frameworks for agent workflows, defining eval test cases, measuring agent quality and performance, or implementing eval-driven development (EDD)."
 origin: ECC
 tools: read_file, write_file, replace, run_shell_command, grep_search, glob
 ---
