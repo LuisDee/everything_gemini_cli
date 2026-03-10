@@ -270,11 +270,33 @@ new_content = improve_skill(
 
 ## 4. DESCRIBE Mode
 
-Optimize the description field for better trigger accuracy.
+Optimize the description field for better trigger accuracy. Two tools are available:
+
+- **GEPA optimizer** (recommended) — uses the `gepa.optimize_anything` engine with real CLI invocations, gradient scoring, and LLM-powered reflection. Battle-tested across 27 skills. Best for thorough optimization.
+- **Built-in loop** (`run_loop.py`) — lighter-weight alternative using direct LLM calls to propose improvements. Good for quick iterations or when GEPA isn't installed.
 
 ### Step 1: Generate trigger eval queries
 
-Create 20 eval queries — mix of should-trigger (8-10) and should-not-trigger (8-10). Save as JSON:
+Create eval data with train/val split — aim for 12+ train examples and 5+ val examples. Mix should-trigger and should-not-trigger cases.
+
+**GEPA format** (recommended — used by both tools):
+
+```json
+{
+  "train": [
+    {"prompt": "realistic user prompt", "expected_skill": "my-skill", "should_activate": true, "difficulty": "easy"},
+    {"prompt": "near-miss prompt", "expected_skill": "my-skill", "should_activate": false, "difficulty": "medium"}
+  ],
+  "val": [
+    {"prompt": "held-out test prompt", "expected_skill": "my-skill", "should_activate": true, "difficulty": "hard"}
+  ],
+  "skill_name": "my-skill"
+}
+```
+
+Save to `~/.gemini/scripts/skill_optimizer/eval_data/<skill-name>.json`.
+
+**Flat format** (also accepted by both tools):
 
 ```json
 [
@@ -299,28 +321,59 @@ Present using the eval review template:
 4. User edits, then clicks "Export Eval Set" -> downloads `eval_set.json`
 5. Check `~/Downloads/` for the file
 
-### Step 3: Run the optimization loop
+### Step 3a: Run GEPA optimizer (recommended)
+
+GEPA lives at `~/.gemini/scripts/skill_optimizer/` and uses the `gepa.optimize_anything` engine for gradient-based description optimization with real Gemini CLI invocations.
+
+```bash
+env GEMINI_API_KEY=$(pass show api/gemini) \
+  python3 ~/.gemini/scripts/skill_optimizer/optimizer.py \
+  --skill <skill-name> \
+  --data ~/.gemini/scripts/skill_optimizer/eval_data/<skill-name>.json \
+  --max-calls 30 \
+  --apply
+```
+
+How GEPA works:
+- Writes each candidate description to the skill's SKILL.md
+- Invokes real `gemini -y --prompt` for each eval prompt (180s timeout per call)
+- Reads the hook log (`/tmp/gemini-skill-activations.log`) to detect which skill activated
+- **Gradient scoring**: 1.0 = target skill activated, 0.3 = wrong skill activated, 0.0 = no activation. For negatives: 1.0 = correctly not activated, 0.0 = false positive
+- LLM reflection proposes improved descriptions based on scores
+- Train/val split prevents overfitting — val scores select the best candidate
+- Original description is always restored in a `finally` block (crash-safe via `.gepa-backup`)
+- `--apply` writes the best description to SKILL.md if it improved
+
+Monitor progress: `cat ~/.gemini/scripts/skill_optimizer/gepa-status.json`
+
+Results saved to: `~/.gemini/scripts/skill_optimizer/results/<skill-name>.json`
+
+**Important context from real-world testing:** Gemini CLI skill activation is inherently non-deterministic (~50-70% activation rate even for excellent descriptions). GEPA accounts for this through gradient scoring — a 0.3 for wrong-skill-activated is better signal than a flat 0.0. If GEPA can't improve on the seed description, the hand-crafted version is likely already near-optimal.
+
+### Step 3b: Run built-in loop (lightweight alternative)
+
+If GEPA isn't installed or you want a quicker iteration:
 
 ```bash
 python3 -m scripts.run_loop \
-  --eval-set <path-to-trigger-eval.json> \
+  --eval-set <path-to-eval.json> \
   --skill-path <path-to-skill> \
   --model claude-sonnet \
   --max-iterations 5 \
   --verbose
 ```
 
-This automatically:
-- Splits eval set 60/40 train/test
-- Evaluates current description (runs each query through `gemini -y --prompt`)
-- Uses hook log (`/tmp/gemini-skill-activations.log`) to detect activations
-- Calls LLM to propose improved descriptions based on failures
+This uses skill-forge's own scripts:
+- Splits eval set 60/40 train/test (stratified by should_trigger)
+- Evaluates current description via `gemini -y --prompt` with hook log detection
+- Calls LLM (via LiteLLM proxy) to propose improved descriptions based on failures
 - Re-evaluates on train + test each iteration
 - Opens HTML report in browser when done
 
 ### Step 4: Apply the result
 
-Take `best_description` from the JSON output and update the skill's SKILL.md.
+- **GEPA**: Use `--apply` flag, or read `results/<skill-name>.json` and apply `best_description` manually
+- **Built-in loop**: Take `best_description` from the JSON output and update the skill's SKILL.md
 
 ---
 
@@ -380,7 +433,9 @@ from scripts.baseline_manager import recover_all
 recover_all()  # Restores any .SKILL.md.forge-disabled files
 ```
 
-The optimization loop (`run_loop.py`) also backs up the original SKILL.md before modifying descriptions and restores it in a `finally` block.
+The optimization loop (`run_loop.py`) backs up the original SKILL.md before modifying descriptions and restores it in a `finally` block.
+
+GEPA has its own crash recovery — it creates `.SKILL.md.gepa-backup` files and restores them via `_ensure_restored()` on startup. If you see a `.gepa-backup` file, GEPA was interrupted mid-optimization.
 
 ---
 
@@ -392,11 +447,11 @@ The optimization loop (`run_loop.py`) also backs up the original SKILL.md before
 - `agents/comparator.md` — How to do blind A/B comparison
 - `agents/analyzer.md` — How to analyze patterns and extract insights
 
-### Scripts
+### Scripts (skill-forge built-in)
 
 - `scripts/run_trigger_eval.py` — Trigger accuracy eval via Gemini CLI
 - `scripts/run_output_eval.py` — Output quality eval with A/B comparison
-- `scripts/run_loop.py` — Unified eval + improve optimization loop
+- `scripts/run_loop.py` — Built-in eval + improve optimization loop (lightweight alternative to GEPA)
 - `scripts/improve_description.py` — LLM-powered description improvement
 - `scripts/improve_skill.py` — LLM-powered skill body improvement
 - `scripts/aggregate_benchmark.py` — Multi-run statistics
@@ -406,6 +461,14 @@ The optimization loop (`run_loop.py`) also backs up the original SKILL.md before
 - `scripts/baseline_manager.py` — Skill disable/enable for A/B testing
 - `scripts/gemini_api.py` — Stdlib HTTP client for LLM calls
 - `scripts/utils.py` — SKILL.md parsing, hook log I/O
+
+### GEPA Optimizer (external, recommended for DESCRIBE mode)
+
+- `~/.gemini/scripts/skill_optimizer/optimizer.py` — GEPA-powered description optimization using `gepa.optimize_anything`, real CLI invocations, hook-based activation detection, and gradient scoring
+- `~/.gemini/scripts/skill_optimizer/eval_data/` — Eval datasets per skill (GEPA format with train/val split)
+- `~/.gemini/scripts/skill_optimizer/results/` — Optimization results per skill
+- `~/.gemini/scripts/skill_optimizer/gepa-status.json` — Live progress during optimization
+- `~/.gemini/hooks/ecc/skill-activation-logger.js` — Hook that logs skill activations to `/tmp/gemini-skill-activations.log` (required by both GEPA and skill-forge's trigger eval)
 
 ### Other
 
