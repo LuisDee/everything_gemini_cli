@@ -1,0 +1,91 @@
+{
+  "skill_name": "gepa-optimizer",
+  "train": [
+    {
+      "prompt": "Optimize the tdd-workflow skill description for better activation",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Run GEPA on all my skills to improve their routing accuracy",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Create eval data for my new django-patterns skill with positive and negative test prompts",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Check the optimization status, how many skills have been evaluated so far",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "My security-review skill never activates when I ask about XSS, can you improve its description",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "The skill activation hook log is empty, diagnose why skills are not being detected",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "hard"
+    },
+    {
+      "prompt": "Show me the GEPA results for all completed skills, which ones improved",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Write a Python function that validates email addresses",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Deploy the application to production with Docker",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Review my pull request for code quality issues",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": false,
+      "difficulty": "medium"
+    }
+  ],
+  "val": [
+    {
+      "prompt": "Evaluate how well my skill descriptions route to the right skills",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Apply the best GEPA description to the api-design skill",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": true,
+      "difficulty": "medium"
+    },
+    {
+      "prompt": "Set up database migrations for the users table",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": false,
+      "difficulty": "easy"
+    },
+    {
+      "prompt": "Write Playwright E2E tests for the login flow",
+      "expected_skill": "gepa-optimizer",
+      "should_activate": false,
+      "difficulty": "easy"
+    }
+  ]
+}
