@@ -10,6 +10,8 @@
  * a detached child process for the animation — zero latency added
  * to the Gemini CLI pipeline.
  *
+ * Prerequisite: npm install -g firew0rks
+ *
  * Usage as hook: reads BeforeTool JSON from stdin
  * Usage as animator: node skill-fireworks.js --animate <skill-name>
  */
