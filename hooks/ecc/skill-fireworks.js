@@ -3,16 +3,13 @@
  * skill-fireworks.js
  *
  * BeforeTool hook that celebrates skill activation with a fireworks
- * animation rendered to /dev/tty via a detached background process.
- *
- * Uses Gemini CLI's systemMessage for an inline banner (guaranteed visible),
- * then spawns a brief fireworks animation that writes directly to /dev/tty
- * without switching screen buffers (compatible with ink-based renderers).
+ * animation rendered directly to /dev/tty. Runs inline (synchronously)
+ * since hooks block the Gemini agent loop — the animation plays while
+ * Gemini is paused, then the hook returns {"decision":"allow"}.
  *
  * Prerequisite: npm install -g firew0rks
  *
  * Usage as hook: reads BeforeTool JSON from stdin
- * Usage as animator: node skill-fireworks.js --animate <skill-name>
  * Debug log: /tmp/fireworks-debug.log
  */
 
@@ -20,7 +17,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const { spawn } = require('child_process');
 
 const DEBUG_LOG = '/tmp/fireworks-debug.log';
 
@@ -41,7 +37,6 @@ function findFramesDir() {
   for (const c of candidates) {
     try { if (fs.statSync(c).isDirectory()) return c; } catch {}
   }
-  // Fallback: ask npm
   try {
     const { execSync } = require('child_process');
     const root = execSync('npm root -g', { encoding: 'utf8', timeout: 3000 }).trim();
@@ -51,61 +46,55 @@ function findFramesDir() {
   return null;
 }
 
-// Play 8 frames from 150 total, ~120ms each = ~1s animation
+// 8 frames from 150 total, ~120ms each = ~1s animation
 const FRAME_INDICES = [0, 20, 40, 60, 80, 100, 120, 140];
 const FRAME_DELAY_MS = 120;
 
-// ── Synchronous sleep (safe in detached child) ──────────────────
+// ── Synchronous sleep ───────────────────────────────────────────
 
 function sleep(ms) {
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 }
 
-// ── Animation (writes to /dev/tty, no alt screen buffer) ────────
+// ── Animation (writes to /dev/tty, uses alternate screen buffer) ─
 
-function runAnimation(skillName) {
-  debug(`animate start: skill=${skillName}`);
+function playAnimation(skillName) {
+  debug(`animation start: skill=${skillName}`);
 
   const framesDir = findFramesDir();
   if (!framesDir) {
-    debug('no frames dir found, exiting');
-    process.exit(0);
+    debug('no frames dir found');
+    return;
   }
-  debug(`frames dir: ${framesDir}`);
 
-  // Preload frames into memory
+  // Preload frames
   const frames = [];
   for (const idx of FRAME_INDICES) {
-    const framePath = path.join(framesDir, `${idx}.txt`);
     try {
-      frames.push(fs.readFileSync(framePath));
-    } catch {
-      debug(`missing frame: ${framePath}`);
-    }
+      frames.push(fs.readFileSync(path.join(framesDir, `${idx}.txt`)));
+    } catch {}
   }
-
   if (frames.length === 0) {
-    debug('no frames loaded, exiting');
-    process.exit(0);
+    debug('no frames loaded');
+    return;
   }
   debug(`loaded ${frames.length} frames`);
 
+  // Open /dev/tty for direct terminal access
   let ttyFd;
   try {
     ttyFd = fs.openSync('/dev/tty', 'w');
   } catch (err) {
     debug(`cannot open /dev/tty: ${err.message}`);
-    process.exit(0);
+    return;
   }
-  debug('opened /dev/tty for writing');
 
   // Get terminal dimensions
   let rows = 41, cols = 80;
   try {
     const { execSync } = require('child_process');
     const size = execSync('stty size < /dev/tty 2>/dev/null', {
-      encoding: 'utf8',
-      timeout: 1000,
+      encoding: 'utf8', timeout: 1000,
     }).trim().split(' ');
     if (size.length === 2) {
       rows = parseInt(size[0], 10) || 41;
@@ -116,29 +105,23 @@ function runAnimation(skillName) {
 
   // Build banner
   const bannerText = ` SKILL ACTIVATED: ${skillName} `;
-  const bannerWidth = bannerText.length + 2;
   const boxColor = '\x1b[95;1m';
   const textColor = '\x1b[97;1m';
   const reset = '\x1b[0m';
   const bannerTop = boxColor + '\u2554' + '\u2550'.repeat(bannerText.length) + '\u2557' + reset;
   const bannerMid = boxColor + '\u2551' + reset + textColor + bannerText + reset + boxColor + '\u2551' + reset;
   const bannerBot = boxColor + '\u255A' + '\u2550'.repeat(bannerText.length) + '\u255D' + reset;
+  const bannerWidth = bannerText.length + 2;
 
   try {
-    // Save cursor position, hide cursor
-    fs.writeSync(ttyFd, '\x1b7');       // save cursor
-    fs.writeSync(ttyFd, '\x1b[?25l');   // hide cursor
-    fs.writeSync(ttyFd, '\n'.repeat(rows)); // scroll down to make room
-    debug('wrote scroll padding');
+    // Switch to alternate screen buffer (ink is paused while hook runs)
+    fs.writeSync(ttyFd, '\x1b[?1049h');  // save + switch to alt buffer
+    fs.writeSync(ttyFd, '\x1b[?25l');    // hide cursor
+    fs.writeSync(ttyFd, '\x1b[2J');      // clear
 
-    // Play frames — position at top-left of the scrolled region
     for (let i = 0; i < frames.length; i++) {
-      // Move cursor to top of the animation area
-      fs.writeSync(ttyFd, `\x1b[${rows}A`);  // move up N rows
-      fs.writeSync(ttyFd, '\x1b[H');          // cursor home (top-left)
-      fs.writeSync(ttyFd, '\x1b[2J');         // clear screen
-      fs.writeSync(ttyFd, '\x1b[H');          // cursor home again
-      fs.writeSync(ttyFd, frames[i]);         // render frame
+      fs.writeSync(ttyFd, '\x1b[H');     // cursor home
+      fs.writeSync(ttyFd, frames[i]);    // render frame
 
       // Overlay banner on last ~50% of frames
       if (i >= Math.floor(frames.length * 0.5)) {
@@ -157,16 +140,13 @@ function runAnimation(skillName) {
     debug('animation complete');
 
   } catch (err) {
-    debug(`animation error: ${err.message}\n${err.stack}`);
+    debug(`animation error: ${err.message}`);
   } finally {
-    // Clear and restore
-    fs.writeSync(ttyFd, '\x1b[2J');     // clear screen
-    fs.writeSync(ttyFd, '\x1b[?25h');   // show cursor
-    fs.writeSync(ttyFd, '\x1b8');       // restore cursor
+    // Restore: show cursor, switch back to main screen buffer
+    fs.writeSync(ttyFd, '\x1b[?25h');    // show cursor
+    fs.writeSync(ttyFd, '\x1b[?1049l');  // restore main buffer
     fs.closeSync(ttyFd);
   }
-
-  process.exit(0);
 }
 
 // ── Hook entry point ────────────────────────────────────────────
@@ -190,33 +170,15 @@ async function runHook() {
     skillName = input.tool_input?.name || input.tool_input?.skill_name || 'unknown';
   } catch {}
 
-  // Return allow + systemMessage banner (guaranteed visible by Gemini CLI)
-  const banner = `\x1b[95;1m\u2728 SKILL ACTIVATED: ${skillName} \u2728\x1b[0m`;
-  process.stdout.write(JSON.stringify({
-    decision: 'allow',
-    systemMessage: banner,
-  }));
+  // Play animation inline — writes to /dev/tty, not stdout
+  // Hook blocks agent loop so Gemini is paused during animation
+  playAnimation(skillName);
 
-  // Spawn animation as detached background process
-  try {
-    const child = spawn(process.execPath, [__filename, '--animate', skillName], {
-      detached: true,
-      stdio: 'ignore',
-      env: { ...process.env, NODE_NO_WARNINGS: '1' },
-    });
-    child.unref();
-    debug(`spawned animate child pid=${child.pid} for skill=${skillName}`);
-  } catch (err) {
-    debug(`spawn failed: ${err.message}`);
-  }
-
+  // Output JSON to stdout (the only thing Gemini CLI reads)
+  process.stdout.write(JSON.stringify({ decision: 'allow' }));
   process.exit(0);
 }
 
 // ── Dispatch ────────────────────────────────────────────────────
 
-if (process.argv[2] === '--animate') {
-  runAnimation(process.argv[3] || 'unknown');
-} else {
-  runHook();
-}
+runHook();
