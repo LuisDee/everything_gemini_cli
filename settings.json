@@ -94,6 +94,12 @@
             "type": "command",
             "command": "node $HOME/.gemini/hooks/ecc/skill-activation-logger.js",
             "description": "Log skill activations to /tmp/gemini-skill-activations.log"
+          },
+          {
+            "name": "ecc-skill-fireworks",
+            "type": "command",
+            "command": "node $HOME/.gemini/hooks/ecc/skill-fireworks.js",
+            "description": "Celebrate skill activation with fireworks animation"
           }
         ]
       },
